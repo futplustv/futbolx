@@ -56,12 +56,12 @@
           "max_simulated_viewers": 0,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://sweden.futtv.nx.kg/f1-en/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 It",
+              "url": "https://sweden.futtv.nx.kg/f1tv/index.m3u8"
             }
           ]
         },
