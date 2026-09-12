@@ -123,7 +123,7 @@
         },
         {
           "name": "Al Khaleej vs Al Nassr FC",
-          "uri_name": "a4v1a7",
+          "uri_name": "a4v165",
           "poster": "https://i.ibb.co/1tkXpz1W/file-00000000e21c8211a59b7072eaf690f7.png",
           "tag": "Saudi League",
           "starts_at": "2026-09-12T21:00:00",
@@ -132,12 +132,12 @@
           "max_simulated_viewers": 0,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed Ar",
+              "url": "https://india.futtv.nx.kg/nass-ar/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 En",
+              "url": "https://india.futtv.nx.kg/nass-en/index.m3u8"
             }
           ]
         },
