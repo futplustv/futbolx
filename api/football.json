@@ -129,7 +129,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://india.futtv.nx.kg/goal/index.m3u8"
             }
           ]
         },
@@ -141,19 +141,19 @@
           "starts_at": "2026-09-12T17:00:00",
           "ends_at": "2026-09-12T19:00:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 400,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://india.futtv.nx.kg/liv-ful/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 Ar",
+              "url": "https://india.futtv.nx.kg/liv2/index.m3u8"
             },
             {
-              "title": "Alt Feed 2",
-              "url": ""
+              "title": "Alt Feed 2 Fr",
+              "url": "https://india.futtv.nx.kg/liv3/index.m3u8"
             }
           ]
         },
@@ -168,16 +168,16 @@
           "max_simulated_viewers": 0,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://india.futtv.nx.kg/che-hul/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 Ar",
+              "url": "https://india.futtv.nx.kg/che2/index.m3u8"
             },
             {
-              "title": "Alt Feed 2",
-              "url": ""
+              "title": "Alt Feed 2 Fr",
+              "url": "https://india.futtv.nx.kg/che3/index.m3u8"
             }
           ]
         },
@@ -193,7 +193,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://india.futtv.nx.kg/cry-ip/index.m3u8"
             }
           ]
         },
@@ -209,7 +209,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://india.futtv.nx.kg/avl-nfo/index.m3u8"
             }
           ]
         },
@@ -225,7 +225,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://india.futtv.nx.kg/bou-bre/index.m3u8"
             }
           ]
         },
