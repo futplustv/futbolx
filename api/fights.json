@@ -16,16 +16,16 @@
           "max_simulated_viewers": 0,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://india.futtv.nx.kg/ufc-en/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 Pt",
+              "url": "https://india.futtv.nx.kg/ufc-pt/index.m3u8"
             },
             {
-              "title": "Alt Feed 2",
-              "url": ""
+              "title": "Alt Feed 2 Esp",
+              "url": "https://india.futtv.nx.kg/ufc-esp/index.m3u8"
             }
           ]
         },
