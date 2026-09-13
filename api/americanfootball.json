@@ -11,7 +11,7 @@
           "poster": "https://conwaycorp.com/wp-content/uploads/2025/09/9-4-Blog-NFL_Redzone-scaled.jpg",
           "tag": "Nfl",
           "starts_at": "2026-09-13T19:55:00",
-          "ends_at": "2026-09-14T04:00:00",
+          "ends_at": "2026-09-14T07:30:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
@@ -219,13 +219,13 @@
           "poster": "https://i.ibb.co/d0GxDR6G/image-e33a023b.jpg",
           "tag": "Nfl",
           "starts_at": "2026-09-14T03:20:00",
-          "ends_at": "2026-09-14T06:00:00",
+          "ends_at": "2026-09-14T07:00:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://on.futtv.nx.kg/cow-gia/index.m3u8"
             }
           ]
         }
