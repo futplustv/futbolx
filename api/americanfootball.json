@@ -6,34 +6,226 @@
       "always_live": 0,
       "streams": [
         {
-          "name": "Florida A&M Rattlers @ Miami Hurricanes",
-          "uri_name": "f4a1r7",
-          "poster": "https://i.postimg.cc/G26KPsxq/image-50568f6b.jpg",
-          "tag": "College Football",
-          "starts_at": "2026-09-11T03:00:00",
-          "ends_at": "2026-09-11T05:30:00",
+          "name": "Nfl RedZone",
+          "uri_name": "n4v1r8",
+          "poster": "https://conwaycorp.com/wp-content/uploads/2025/09/9-4-Blog-NFL_Redzone-scaled.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T19:55:00",
+          "ends_at": "2026-09-14T00:00:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://sweden.futtv.nx.kg/flo-mia/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "San Francisco 49ers @ Los Angeles Rams",
-          "uri_name": "s4f1r7",
-          "poster": "https://i.postimg.cc/MHRD9K95/image-a4c0b7e8.jpg",
-          "tag": "NFL",
-          "starts_at": "2026-09-11T03:35:00",
-          "ends_at": "2026-09-11T07:00:00",
+          "name": "Atlanta Falcons @ Pittsburgh Steelers",
+          "uri_name": "a4v1p8",
+          "poster": "https://i.ibb.co/67ffHhtd/image-9d193209.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T20:00:00",
+          "ends_at": "2026-09-13T23:25:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://sweden.futtv.nx.kg/49ers-ram/index.m3u8"
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Baltimore Ravens @ Indianapolis Colts",
+          "uri_name": "b4v1i8",
+          "poster": "https://i.ibb.co/5PNXgFw/image-a1141c89.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T20:00:00",
+          "ends_at": "2026-09-13T23:25:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Buffalo Bills @ Houston Texans",
+          "uri_name": "b4v1h8",
+          "poster": "https://i.ibb.co/HD8pzmPS/image-ae886b.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T20:00:00",
+          "ends_at": "2026-09-13T23:25:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Chicago Bears @ Carolina Panthers",
+          "uri_name": "c4v1c8",
+          "poster": "https://i.ibb.co/1GQ7bfxx/image-a315c0bd.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T20:00:00",
+          "ends_at": "2026-09-13T23:25:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Cleveland Browns @ Jacksonville Jaguars",
+          "uri_name": "c4v1j8",
+          "poster": "https://i.ibb.co/6R3L0sj2/image-fe1d76cc.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T20:00:00",
+          "ends_at": "2026-09-13T23:25:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "New Orleans Saints @ Detroit Lions",
+          "uri_name": "n4v1d8",
+          "poster": "https://i.ibb.co/DfYzBV1t/image-5fa8aa0d.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T20:00:00",
+          "ends_at": "2026-09-13T23:25:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "New York Jets @ Tennessee Titans",
+          "uri_name": "n4v1t8",
+          "poster": "https://i.ibb.co/b56Q0p9F/image-7fab6c58.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T20:00:00",
+          "ends_at": "2026-09-13T23:25:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Tampa Bay Buccaneers @ Cincinnati Bengals",
+          "uri_name": "t4v1c8",
+          "poster": "https://i.ibb.co/gZfXwLpD/image-79ea009.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T20:00:00",
+          "ends_at": "2026-09-13T23:25:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Arizona Cardinals @ Los Angeles Chargers",
+          "uri_name": "a4v1l8",
+          "poster": "https://i.ibb.co/S4Zdm5CT/image-ce3beb93.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T23:25:00",
+          "ends_at": "2026-09-14T02:00:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Green Bay Packers @ Minnesota Vikings",
+          "uri_name": "g4v1m8",
+          "poster": "https://i.ibb.co/DPFfgXgb/image-51119cc0.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T23:25:00",
+          "ends_at": "2026-09-14T02:00:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Miami Dolphins @ Las Vegas Raiders",
+          "uri_name": "m4v1l8",
+          "poster": "https://i.ibb.co/LTjBbHD/image-d4c6066e.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T23:25:00",
+          "ends_at": "2026-09-14T02:00:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Washington Commanders @ Philadelphia Eagles",
+          "uri_name": "w4v1p8",
+          "poster": "https://i.ibb.co/0VRYMHjT/image-ea84a20e.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-13T23:25:00",
+          "ends_at": "2026-09-14T02:00:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Dallas Cowboys @ New York Giants",
+          "uri_name": "d4v1n8",
+          "poster": "https://i.ibb.co/d0GxDR6G/image-e33a023b.jpg",
+          "tag": "Nfl",
+          "starts_at": "2026-09-14T03:20:00",
+          "ends_at": "2026-09-14T06:00:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
             }
           ]
         }
