@@ -17,15 +17,15 @@
           "streams": [
             {
               "title": "Espn",
-              "url": "https://india.futtv.nx.kg/espn/index.m3u8"
+              "url": "https://on.futtv.nx.kg/espn/index.m3u8"
             },
             {
               "title": "Espn 2",
-              "url": "https://india.futtv.nx.kg/espn2/index.m3u8"
+              "url": "https://on.futtv.nx.kg/espn2/index.m3u8"
             },
             {
               "title": "Espn Deportes",
-              "url": "https://india.futtv.nx.kg/espnd/index.m3u8"
+              "url": "https://on.futtv.nx.kg/espnd/index.m3u8"
             }
           ]
         }
