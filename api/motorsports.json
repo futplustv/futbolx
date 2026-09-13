@@ -97,11 +97,11 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://on.futtv.nx.kg/f1-sky/index.m3u8"
             },
             {
               "title": "Alt Feed 1",
-              "url": ""
+              "url": "https://on.futtv.nx.kg/f1-ap/index.m3u8"
             }
           ]
         }
