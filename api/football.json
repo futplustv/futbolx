@@ -161,7 +161,7 @@
           "starts_at": "2026-09-13T18:30:00",
           "ends_at": "2026-09-13T20:40:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 1200,
           "streams": [
             {
               "title": "Main Feed",
@@ -197,7 +197,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://on.futtv.nx.kg/bay/index.m3u8"
             }
           ]
         },
