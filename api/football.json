@@ -6,6 +6,22 @@
       "always_live": 0,
       "streams": [
         {
+          "name": "Rangers vs Celtic",
+          "uri_name": "r4v1c8",
+          "poster": "https://i.ibb.co/9SYc07N/Chat-GPT-Image-Sep-13-2026-08-00-19-AM.png",
+          "tag": "Scottish League Cup",
+          "starts_at": "2026-09-13T14:00:00",
+          "ends_at": "2026-09-13T16:00:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": "https://off.futtv.nx.kg/celt/index.m3u8"
+            }
+          ]
+        },
+        {
           "name": "Sheffield vs Wolves",
           "uri_name": "s4v1w8",
           "poster": "https://i.ibb.co/3mvqWHy9/file-000000000e2c8211bcabf2d6f83ae89d.png",
@@ -17,7 +33,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/wolv/index.m3u8"
             }
           ]
         },
@@ -33,7 +49,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/celta/index.m3u8"
             }
           ]
         },
