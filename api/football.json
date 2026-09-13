@@ -277,7 +277,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://on.futtv.nx.kg/juv/index.m3u8"
             }
           ]
         },
@@ -293,7 +293,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://on.futtv.nx.kg/psg/index.m3u8"
             }
           ]
         },
@@ -309,7 +309,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://on.futtv.nx.kg/atm/index.m3u8"
             }
           ]
         },
