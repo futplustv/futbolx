@@ -164,24 +164,24 @@
           "max_simulated_viewers": 1200,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://on.futtv.nx.kg/mun-en/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 En",
+              "url": "https://on.futtv.nx.kg/mci-en/index.m3u8"
             },
             {
-              "title": "Alt Feed 2",
-              "url": ""
+              "title": "Alt Feed 2 Fr",
+              "url": "https://on.futtv.nx.kg/mun-fr/index.m3u8"
             },
             {
-              "title": "Alt Feed 3",
-              "url": ""
+              "title": "Alt Feed 3 Ar",
+              "url": "https://off.futtv.nx.kg/mun-ar/index.m3u8"
             },
             {
-              "title": "Alt Feed 4",
-              "url": ""
+              "title": "Alt Feed 4 Alb",
+              "url": "https://off.futtv.nx.kg/mun-alb/index.m3u8"
             }
           ]
         },
