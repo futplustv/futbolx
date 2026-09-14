@@ -9,11 +9,11 @@ module.exports = async (req, res) => {
     return res.status(200).end();
   }
 
-  const { stream, server } = req.query;
+  const { url } = req.query;
 
-  if (!stream) {
+  if (!url) {
     return res.status(400).json({
-      error: 'Missing stream parameter'
+      error: 'Missing url parameter'
     });
   }
 
@@ -25,42 +25,114 @@ module.exports = async (req, res) => {
     });
   }
 
-  const FLUSSONIC_SERVERS = {
-    1: process.env.CDN_BASE_URL,
-    2: process.env.CDN_BASE_URL_2
-  };
+  const FLUSSONIC_SERVERS = [
+    process.env.CDN_BASE_URL,
+    process.env.CDN_BASE_URL_2
+  ]
+    .filter(Boolean)
+    .map(server => server.replace(/\/+$/, ''));
 
-  const selectedServer = String(server || '1');
-  const CDN_BASE_URL = FLUSSONIC_SERVERS[selectedServer];
+  let streamUrl;
 
-  if (!CDN_BASE_URL) {
-    return res.status(500).json({
-      error: `Flussonic server ${selectedServer} is not configured`
+  try {
+    streamUrl = new URL(url);
+  } catch {
+    return res.status(400).json({
+      error: 'Invalid stream URL'
     });
   }
 
-  const now = Math.floor(Date.now() / 1000);
+  const requestOrigin =
+    streamUrl.origin.replace(/\/+$/, '');
 
-  const start = now - 300;
-  const end = now + 10800;
+  /*
+   * Automatically find which configured Flussonic
+   * server this stream belongs to.
+   */
+  const matchedServer =
+    FLUSSONIC_SERVERS.find(server => {
+      try {
+        return new URL(server).origin === requestOrigin;
+      } catch {
+        return false;
+      }
+    });
 
-  const salt = crypto.randomBytes(8).toString('hex');
+  /*
+   * This is not one of our protected Flussonic
+   * servers.
+   *
+   * Let the frontend play it normally.
+   */
+  if (!matchedServer) {
+    return res.status(200).json({
+      protected: false,
+      url
+    });
+  }
 
+  /*
+   * Convert:
+   *
+   * /channel1/index.m3u8
+   *
+   * into:
+   *
+   * channel1
+   */
+  let stream =
+    streamUrl.pathname
+      .replace(/^\/+/, '')
+      .replace(/\/index\.m3u8$/i, '');
+
+  if (!stream) {
+    return res.status(400).json({
+      error: 'Could not determine Flussonic stream name'
+    });
+  }
+
+  stream = decodeURIComponent(stream);
+
+  const now =
+    Math.floor(Date.now() / 1000);
+
+  /*
+   * Token starts 5 minutes before current time
+   * to account for small clock differences.
+   *
+   * Lifetime: 3 hours.
+   */
+  const start =
+    now - 300;
+
+  const end =
+    now + 10800;
+
+  const salt =
+    crypto.randomBytes(8).toString('hex');
+
+  /*
+   * Official Flussonic securetoken formula:
+   *
+   * stream + no_check_ip + start + end + secret + salt
+   */
   const stringToHash =
     `${stream}no_check_ip${start}${end}${SECRET_KEY}${salt}`;
 
-  const hash = crypto
-    .createHash('sha1')
-    .update(stringToHash)
-    .digest('hex');
+  const hash =
+    crypto
+      .createHash('sha1')
+      .update(stringToHash)
+      .digest('hex');
 
   const token =
     `${hash}-${salt}-${end}-${start}`;
 
   const tokenizedUrl =
-    `${CDN_BASE_URL}/${stream}/index.m3u8?token=${token}`;
+    `${matchedServer}/${stream}/index.m3u8?token=${token}`;
 
   return res.status(200).json({
+    protected: true,
     url: tokenizedUrl
   });
 };
