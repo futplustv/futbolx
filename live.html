@@ -1121,111 +1121,75 @@
 
     /*
      * =====================================================
-     * FLUSSONIC TOKEN CONFIG
+     * AUTOMATIC FLUSSONIC TOKEN HANDLING
      * =====================================================
      *
-     * Only these two Flussonic hosts are protected.
+     * No Flussonic server/domain is hardcoded here.
      *
-     * Server 1 = off.futtv.nx.kg
-     * Server 2 = type.futtv.nx.kg
+     * Every M3U8 URL is sent to /api/token.
      *
-     * Only matching Flussonic URLs will be tokenized.
-     * Other M3U8 URLs remain completely normal.
-     * IFRAME streams remain untouched.
+     * The backend decides automatically whether the URL
+     * belongs to one of the configured Flussonic servers.
+     *
+     * If it is protected, the backend returns a fresh
+     * tokenized M3U8 URL.
+     *
+     * Normal/non-Flussonic M3U8 streams continue normally.
      */
-
-    const FLUSSONIC_TOKEN_SERVERS = {
-
-      'off.futtv.nx.kg': '1',
-      'type.futtv.nx.kg': '2'
-
-    };
-
 
     async function playStream(url) {
 
       if (playerInstance) {
 
-        playerInstance.remove();
+        try {
+          playerInstance.remove();
+        } catch (_) {}
+
         playerInstance = null;
 
       }
 
 
+      let tokenized = false;
+
       /*
        * =====================================================
-       * FLUSSONIC TOKENIZATION
+       * AUTOMATIC TOKEN REQUEST
        * =====================================================
-       *
-       * IMPORTANT:
-       *
-       * We check for a protected Flussonic hostname BEFORE
-       * calling isM3U8().
-       *
-       * This prevents the browser from requesting the
-       * protected URL without a token and receiving 403.
        */
-
-      let protectedFlussonic = false;
 
       try {
 
-        const streamUrl =
+        const parsedUrl =
           new URL(url);
 
-        const hostname =
-          streamUrl.hostname.toLowerCase();
-
-        const server =
-          FLUSSONIC_TOKEN_SERVERS[hostname];
+        const looksLikeM3U8 =
+          parsedUrl.pathname
+            .toLowerCase()
+            .includes('.m3u8') ||
+          parsedUrl.href
+            .toLowerCase()
+            .includes('.m3u8');
 
 
         /*
-         * If this hostname is one of our protected
-         * Flussonic servers, generate the token first.
+         * Only M3U8 streams need token processing.
+         *
+         * The backend decides whether the M3U8 belongs
+         * to a protected Flussonic server.
          */
 
-        if (server) {
+        if (looksLikeM3U8) {
 
-          protectedFlussonic = true;
+          console.log(
+            'CHECKING STREAM FOR FLUSSONIC TOKEN:',
+            url
+          );
 
-
-          /*
-           * Example:
-           *
-           * https://off.futtv.nx.kg/channel1/index.m3u8
-           *
-           * becomes:
-           *
-           * channel1
-           */
-
-          let stream =
-            streamUrl.pathname
-              .replace(/^\/+/, '')
-              .replace(/\/index\.m3u8$/i, '');
-
-
-          if (!stream) {
-
-            throw new Error(
-              'Could not determine Flussonic stream name'
-            );
-
-          }
-
-
-          stream =
-            decodeURIComponent(stream);
-
-
-          /*
-           * Ask Vercel for the fresh Flussonic token.
-           */
 
           const tokenResponse =
             await fetch(
-              `/api/token?stream=${encodeURIComponent(stream)}&server=${encodeURIComponent(server)}`,
+              `/api/token?url=${encodeURIComponent(url)}`,
               {
                 method: 'GET',
                 cache: 'no-store',
@@ -1234,80 +1198,89 @@
             );
 
 
-          if (!tokenResponse.ok) {
+          console.log(
+            'TOKEN API STATUS:',
+            tokenResponse.status
+          );
 
-            throw new Error(
-              `Token request failed: HTTP ${tokenResponse.status}`
+
+          if (tokenResponse.ok) {
+
+            const tokenData =
+              await tokenResponse.json();
+
+
+            console.log(
+              'TOKEN API RESPONSE:',
+              tokenData
             );
 
+
+            /*
+             * If backend says this is a protected
+             * Flussonic stream, use ONLY the returned
+             * tokenized URL.
+             */
+
+            if (
+              tokenData.protected === true &&
+              tokenData.url
+            ) {
+
+              url =
+                tokenData.url;
+
+              tokenized = true;
+
+
+              console.log(
+                'TOKENIZED M3U8 SENT TO JWPLAYER:',
+                url
+              );
+
+            }
+
           }
-
-
-          const tokenData =
-            await tokenResponse.json();
-
-
-          if (!tokenData.url) {
-
-            throw new Error(
-              'Token API returned no stream URL'
-            );
-
-          }
-
-
-          /*
-           * Replace the original unprotected URL with
-           * the tokenized URL BEFORE JWPlayer sees it.
-           */
-
-          url =
-            tokenData.url;
 
         }
 
       } catch (err) {
 
         console.error(
-          'Flussonic token error:',
+          'FLUSSONIC TOKEN PROCESSING ERROR:',
           err
         );
-
-
-        /*
-         * If a protected Flussonic URL failed to obtain
-         * a token, do NOT attempt the original URL.
-         *
-         * This prevents an unnecessary 403 request.
-         */
-
-        if (protectedFlussonic) {
-          return;
-        }
 
       }
 
 
       /*
        * =====================================================
-       * NORMAL STREAM DETECTION
+       * PLAYBACK
        * =====================================================
        *
-       * Protected Flussonic URLs reach this point already
-       * tokenized.
+       * Tokenized Flussonic streams go directly to JWPlayer.
        *
-       * Non-protected M3U8 URLs are checked normally.
+       * Normal M3U8 streams are detected normally.
        *
-       * IFRAME URLs are handled normally.
+       * Non-M3U8 streams continue using the iframe exactly
+       * as before.
        */
+
+      if (tokenized) {
+
+        initActualPlayer(
+          url,
+          true
+        );
+
+        return;
+
+      }
+
 
       const useJW =
         await isM3U8(url);
-
-
-      /*
-       * Existing player behavior stays unchanged.
-       */
 
       initActualPlayer(
         url,
@@ -1321,131 +1294,199 @@
 
       if (useJW) {
 
-        document.getElementById('embedPlayer').style.display = 'none';
+        document.getElementById(
+          'embedPlayer'
+        ).style.display = 'none';
 
         const container =
-          document.getElementById('oplayer-container');
+          document.getElementById(
+            'oplayer-container'
+          );
 
         container.style.display = 'block';
 
         container.innerHTML =
           '<div id="jw-player"></div>';
 
+
+        /*
+         * =====================================================
+         * JWPLAYER
+         * =====================================================
+         */
+
         playerInstance =
           jwplayer("jw-player").setup({
 
             file: url,
+
+            type: "hls",
+
             autostart: false,
+
             mute: true,
+
             width: "100%",
+
             aspectratio: "16:9",
+
             cast: {}
 
           });
 
-        playerInstance.on('ready', () => {
 
-          const triggerAd = () => {
+        /*
+         * Diagnostic logging.
+         */
 
-            const host =
-              window.location.hostname.toLowerCase();
+        playerInstance.on(
+          'ready',
+          () => {
 
-            /*
-             * =====================================================
-             * FUTBOL-X.TOP ONLY
-             * =====================================================
-             */
+            console.log(
+              'JWPLAYER READY'
+            );
 
-            if (
-              host === 'futbol-x.top' ||
-              host === 'www.futbol-x.top'
-            ) {
+            console.log(
+              'JWPLAYER URL:',
+              url
+            );
 
-              const popunderScript =
-                document.createElement('script');
 
-              popunderScript.src =
-                "https://pl29465843.effectivecpmnetwork.com/ed/a2/e5/eda2e566755b4b6a812d6d5af6d26193.js";
+            const triggerAd = () => {
 
-              document.body.appendChild(popunderScript);
+              const host =
+                window.location.hostname.toLowerCase();
 
-              window.open(
-                "https://omg10.com/4/11347966",
-                "_blank"
-              );
-
-            }
-
-            /*
-             * =====================================================
-             * FUTBOL-X.XYZ ONLY
-             * =====================================================
-             */
-
-            else if (
-              host === 'futbol-x.xyz' ||
-              host === 'www.futbol-x.xyz'
-            ) {
-
-              const xyzAd =
-                document.createElement('script');
-
-              xyzAd.src =
-                "https://pl30323849.profitableratecpmnetwork.com/d0/10/64/d0106475f853258aa2f6b743cb58e857.js";
-
-              document.body.appendChild(xyzAd);
 
               /*
-               * New XYZ onclick ad.
-               * Triggered by the user's first click on the player.
+               * =====================================================
+               * FUTBOL-X.TOP ONLY
+               * =====================================================
                */
 
-              window.open(
-                "https://omg10.com/4/11786340",
-                "_blank"
+              if (
+                host === 'futbol-x.top' ||
+                host === 'www.futbol-x.top'
+              ) {
+
+                const popunderScript =
+                  document.createElement('script');
+
+                popunderScript.src =
+                  "https://pl29465843.effectivecpmnetwork.com/ed/a2/e5/eda2e566755b4b6a812d6d5af6d26193.js";
+
+                document.body.appendChild(
+                  popunderScript
+                );
+
+                window.open(
+                  "https://omg10.com/4/11347966",
+                  "_blank"
+                );
+
+              }
+
+
+              /*
+               * =====================================================
+               * FUTBOL-X.XYZ ONLY
+               * =====================================================
+               */
+
+              else if (
+                host === 'futbol-x.xyz' ||
+                host === 'www.futbol-x.xyz'
+              ) {
+
+                const xyzAd =
+                  document.createElement('script');
+
+                xyzAd.src =
+                  "https://pl30323849.profitableratecpmnetwork.com/d0/10/64/d0106475f853258aa2f6b743cb58e857.js";
+
+                document.body.appendChild(
+                  xyzAd
+                );
+
+                window.open(
+                  "https://omg10.com/4/11786340",
+                  "_blank"
+                );
+
+              }
+
+
+              /*
+               * =====================================================
+               * FUTBOL-X.SRYZE.CC ONLY
+               * =====================================================
+               */
+
+              else if (
+                host === 'futbol-x.sryze.cc'
+              ) {
+
+                const sryzeAd =
+                  document.createElement('script');
+
+                sryzeAd.src =
+                  "https://pl31234277.profitableratecpmnetwork.com/26/f5/c1/26f5c129f60af79adf85224f1074b93d.js";
+
+                document.body.appendChild(
+                  sryzeAd
+                );
+
+              }
+
+
+              container.removeEventListener(
+                'click',
+                triggerAd
               );
 
-            }
+            };
 
-            /*
-             * =====================================================
-             * FUTBOL-X.SRYZE.CC ONLY
-             * =====================================================
-             */
 
-            else if (
-              host === 'futbol-x.sryze.cc'
-            ) {
-
-              const sryzeAd =
-                document.createElement('script');
-
-              sryzeAd.src =
-                "https://pl31234277.profitableratecpmnetwork.com/26/f5/c1/26f5c129f60af79adf85224f1074b93d.js";
-
-              document.body.appendChild(sryzeAd);
-
-            }
-
-            /*
-             * Remove listener after first trigger.
-             * This keeps the ad from firing repeatedly
-             * from additional player clicks.
-             */
-
-            container.removeEventListener(
+            container.addEventListener(
               'click',
               triggerAd
             );
 
-          };
+          }
+        );
 
-          container.addEventListener(
-            'click',
-            triggerAd
-          );
 
-        });
+        playerInstance.on(
+          'error',
+          (error) => {
+
+            console.error(
+              'JWPLAYER ERROR:',
+              error
+            );
+
+            console.error(
+              'JWPLAYER STREAM URL:',
+              url
+            );
+
+          }
+        );
+
+
+        playerInstance.on(
+          'playlistItem',
+          (item) => {
+
+            console.log(
+              'JWPLAYER PLAYLIST ITEM:',
+              item
+            );
+
+          }
+        );
+
 
       } else {
 
@@ -1454,30 +1495,36 @@
         ).style.display = 'none';
 
         const iframe =
-          document.getElementById('embedPlayer');
+          document.getElementById(
+            'embedPlayer'
+          );
 
         iframe.style.display = 'block';
 
         try {
 
-          const u = new URL(url);
+          const u =
+            new URL(url);
 
           u.searchParams.set(
             'autoplay',
             '0'
           );
 
-          iframe.src = u.toString();
+          iframe.src =
+            u.toString();
 
         } catch {
 
-          iframe.src = url;
+          iframe.src =
+            url;
 
         }
 
       }
 
     }
+
 
     function populateStreamDropdown(event) {
 
@@ -1646,11 +1693,13 @@
 
             playStream(realUrl);
 
-            label.textContent = title;
+            label.textContent =
+              title;
 
             document.getElementById(
               'currentStreamName'
-            ).innerHTML = title;
+            ).innerHTML =
+              title;
 
             optionsContainer
               .querySelectorAll(
@@ -1662,7 +1711,9 @@
                 )
               );
 
-            option.classList.add('selected');
+            option.classList.add(
+              'selected'
+            );
 
             closePopup();
 
@@ -1672,7 +1723,8 @@
 
       if (streams.length) {
 
-        const first = streams[0];
+        const first =
+          streams[0];
 
         label.textContent =
           typeof first === 'string'
@@ -1744,6 +1796,7 @@
       }
 
     }
+
 
     window.initViewerPresenceEngine = () => {
 
@@ -1933,6 +1986,7 @@
 
     };
 
+
     window.renderConsolidatedViewers = () => {
 
       const element =
@@ -1979,6 +2033,7 @@
         totalCombinedViews;
 
     };
+
 
     document.addEventListener(
       'DOMContentLoaded',
@@ -2181,7 +2236,9 @@
             ).innerHTML =
               `${dynamicInitialFeed.title || 'Main Feed'}`;
 
-            playStream(initialUrl);
+            playStream(
+              initialUrl
+            );
 
             populateStreamDropdown(
               foundEvent
