@@ -5,28 +5,38 @@ module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
 
-  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
 
   const { stream, server } = req.query;
 
   if (!stream) {
-    return res.status(400).json({ error: 'Missing stream parameter' });
+    return res.status(400).json({
+      error: 'Missing stream parameter'
+    });
   }
 
-  const SECRET_KEY =
-    process.env.STREAM_SECRET_KEY || 'my_super_secret_key_123';
+  const SECRET_KEY = process.env.STREAM_SECRET_KEY;
 
-  // CHANGE THESE TO YOUR TWO REAL FLUSSONIC DOMAINS
+  if (!SECRET_KEY) {
+    return res.status(500).json({
+      error: 'STREAM_SECRET_KEY is not configured'
+    });
+  }
+
   const FLUSSONIC_SERVERS = {
-    1: 'https://off.futtv.nx.kg',
-    2: 'https://type.futtv.nx.kg'
+    1: process.env.CDN_BASE_URL,
+    2: process.env.CDN_BASE_URL_2
   };
 
   const selectedServer = String(server || '1');
   const CDN_BASE_URL = FLUSSONIC_SERVERS[selectedServer];
 
   if (!CDN_BASE_URL) {
-    return res.status(400).json({ error: 'Invalid server' });
+    return res.status(500).json({
+      error: `Flussonic server ${selectedServer} is not configured`
+    });
   }
 
   const now = Math.floor(Date.now() / 1000);
@@ -36,9 +46,6 @@ module.exports = async (req, res) => {
 
   const salt = crypto.randomBytes(8).toString('hex');
 
-  // IMPORTANT:
-  // Because Flussonic uses no_check_ip=true,
-  // the literal "no_check_ip" replaces the viewer IP.
   const stringToHash =
     `${stream}no_check_ip${start}${end}${SECRET_KEY}${salt}`;
 
