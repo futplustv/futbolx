@@ -7,26 +7,54 @@ module.exports = async (req, res) => {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  const { stream } = req.query;
-  if (!stream) return res.status(400).json({ error: 'Missing stream parameter' });
+  const { stream, server } = req.query;
 
-  const SECRET_KEY = process.env.STREAM_SECRET_KEY || 'my_super_secret_key_123';
-  const CDN_BASE_URL = process.env.CDN_BASE_URL || 'https://germany.fut.ryzn.pro';
+  if (!stream) {
+    return res.status(400).json({ error: 'Missing stream parameter' });
+  }
 
-  // Get real user IP from Vercel headers
-  const userIp = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress;
+  const SECRET_KEY =
+    process.env.STREAM_SECRET_KEY || 'my_super_secret_key_123';
+
+  // Change these two domains to your real Flussonic servers
+  const FLUSSONIC_SERVERS = {
+    1: 'https://random.com',
+    2: 'https://random2.com'
+  };
+
+  const selectedServer = server || '1';
+
+  const CDN_BASE_URL = FLUSSONIC_SERVERS[selectedServer];
+
+  if (!CDN_BASE_URL) {
+    return res.status(400).json({ error: 'Invalid server' });
+  }
 
   const now = Math.floor(Date.now() / 1000);
-  const start = now - 300; 
-  const end = now + 60; // Token expires in 60s (prevents sharing links)
+
+  const start = now - 300;
+  const end = now + 60;
+
   const salt = crypto.randomBytes(8).toString('hex');
 
-  // Flussonic SHA1 formula using real user IP
-  const stringToHash = `${stream}${userIp}${start}${end}${SECRET_KEY}${salt}`;
-  const hash = crypto.createHash('sha1').update(stringToHash).digest('hex');
+  // IMPORTANT:
+  // IP is intentionally NOT included.
+  // This allows users to watch while using VPN/mobile data
+  // or changing networks.
+  const stringToHash =
+    `${stream}${start}${end}${SECRET_KEY}${salt}`;
+
+  const hash = crypto
+    .createHash('sha1')
+    .update(stringToHash)
+    .digest('hex');
 
   const token = `${hash}-${salt}-${end}-${start}`;
-  const tokenizedUrl = `${CDN_BASE_URL}/${stream}/index.m3u8?token=${token}`;
 
-  return res.status(200).json({ url: tokenizedUrl });
+  const tokenizedUrl =
+    `${CDN_BASE_URL}/${stream}/index.m3u8?token=${token}`;
+
+  return res.status(200).json({
+    url: tokenizedUrl
+  });
 };
