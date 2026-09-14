@@ -16,14 +16,13 @@ module.exports = async (req, res) => {
   const SECRET_KEY =
     process.env.STREAM_SECRET_KEY || 'my_super_secret_key_123';
 
-  // Change these two domains to your real Flussonic servers
+  // CHANGE THESE TO YOUR TWO REAL FLUSSONIC DOMAINS
   const FLUSSONIC_SERVERS = {
     1: 'https://random.com',
     2: 'https://random2.com'
   };
 
-  const selectedServer = server || '1';
-
+  const selectedServer = String(server || '1');
   const CDN_BASE_URL = FLUSSONIC_SERVERS[selectedServer];
 
   if (!CDN_BASE_URL) {
@@ -38,18 +37,18 @@ module.exports = async (req, res) => {
   const salt = crypto.randomBytes(8).toString('hex');
 
   // IMPORTANT:
-  // IP is intentionally NOT included.
-  // This allows users to watch while using VPN/mobile data
-  // or changing networks.
+  // Because Flussonic uses no_check_ip=true,
+  // the literal "no_check_ip" replaces the viewer IP.
   const stringToHash =
-    `${stream}${start}${end}${SECRET_KEY}${salt}`;
+    `${stream}no_check_ip${start}${end}${SECRET_KEY}${salt}`;
 
   const hash = crypto
     .createHash('sha1')
     .update(stringToHash)
     .digest('hex');
 
-  const token = `${hash}-${salt}-${end}-${start}`;
+  const token =
+    `${hash}-${salt}-${end}-${start}`;
 
   const tokenizedUrl =
     `${CDN_BASE_URL}/${stream}/index.m3u8?token=${token}`;
