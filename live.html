@@ -1124,20 +1124,20 @@
      * FLUSSONIC TOKEN CONFIG
      * =====================================================
      *
-     * CHANGE THESE TWO HOSTNAMES TO YOUR REAL
-     * FLUSSONIC SERVER DOMAINS.
+     * Only these two Flussonic hosts are protected.
      *
-     * Server 1 = random.com
-     * Server 2 = random2.com
+     * Server 1 = off.futtv.nx.kg
+     * Server 2 = type.futtv.nx.kg
      *
      * Only matching Flussonic URLs will be tokenized.
-     * IFRAME / non-Flussonic streams remain untouched.
+     * Other M3U8 URLs remain completely normal.
+     * IFRAME streams remain untouched.
      */
 
     const FLUSSONIC_TOKEN_SERVERS = {
 
-      'random.com': '1',
-      'random2.com': '2'
+      'off.futtv.nx.kg': '1',
+      'type.futtv.nx.kg': '2'
 
     };
 
@@ -1151,127 +1151,158 @@
 
       }
 
-      const useJW = await isM3U8(url);
-
 
       /*
        * =====================================================
        * FLUSSONIC TOKENIZATION
        * =====================================================
        *
-       * Only JW / M3U8 streams are processed here.
-       * IFRAME streams continue exactly as before.
+       * IMPORTANT:
+       *
+       * We check for a protected Flussonic hostname BEFORE
+       * calling isM3U8().
+       *
+       * This prevents the browser from requesting the
+       * protected URL without a token and receiving 403.
        */
 
-      if (useJW) {
+      let protectedFlussonic = false;
 
-        try {
+      try {
 
-          const streamUrl =
-            new URL(url);
+        const streamUrl =
+          new URL(url);
 
-          const hostname =
-            streamUrl.hostname.toLowerCase();
+        const hostname =
+          streamUrl.hostname.toLowerCase();
 
-          const server =
-            FLUSSONIC_TOKEN_SERVERS[hostname];
+        const server =
+          FLUSSONIC_TOKEN_SERVERS[hostname];
+
+
+        /*
+         * If this hostname is one of our protected
+         * Flussonic servers, generate the token first.
+         */
+
+        if (server) {
+
+          protectedFlussonic = true;
 
 
           /*
-           * If this M3U8 does not come from one of the
-           * configured Flussonic servers, leave it alone.
+           * Example:
+           *
+           * https://off.futtv.nx.kg/channel1/index.m3u8
+           *
+           * becomes:
+           *
+           * channel1
            */
 
-          if (server) {
-
-            /*
-             * Example:
-             *
-             * https://random.com/channel1/index.m3u8
-             *
-             * becomes:
-             *
-             * channel1
-             */
-
-            let stream =
-              streamUrl.pathname
-                .replace(/^\/+/, '')
-                .replace(/\/index\.m3u8$/i, '');
+          let stream =
+            streamUrl.pathname
+              .replace(/^\/+/, '')
+              .replace(/\/index\.m3u8$/i, '');
 
 
-            if (!stream) {
+          if (!stream) {
 
-              throw new Error(
-                'Could not determine Flussonic stream name'
-              );
-
-            }
-
-
-            stream =
-              decodeURIComponent(stream);
-
-
-            /*
-             * Ask our Vercel API for a fresh token.
-             */
-
-            const tokenResponse =
-              await fetch(
-                `/api/token?stream=${encodeURIComponent(stream)}&server=${encodeURIComponent(server)}`,
-                {
-                  method: 'GET',
-                  cache: 'no-store',
-                  signal: AbortSignal.timeout(5000)
-                }
-              );
-
-
-            if (!tokenResponse.ok) {
-
-              throw new Error(
-                `Token request failed: HTTP ${tokenResponse.status}`
-              );
-
-            }
-
-
-            const tokenData =
-              await tokenResponse.json();
-
-
-            if (!tokenData.url) {
-
-              throw new Error(
-                'Token API returned no stream URL'
-              );
-
-            }
-
-
-            /*
-             * Replace the original Flussonic URL
-             * with the protected tokenized URL.
-             */
-
-            url =
-              tokenData.url;
+            throw new Error(
+              'Could not determine Flussonic stream name'
+            );
 
           }
 
-        } catch (err) {
 
-          console.error(
-            'Flussonic token error:',
-            err
-          );
+          stream =
+            decodeURIComponent(stream);
 
-          return;
+
+          /*
+           * Ask Vercel for the fresh Flussonic token.
+           */
+
+          const tokenResponse =
+            await fetch(
+              `/api/token?stream=${encodeURIComponent(stream)}&server=${encodeURIComponent(server)}`,
+              {
+                method: 'GET',
+                cache: 'no-store',
+                signal: AbortSignal.timeout(5000)
+              }
+            );
+
+
+          if (!tokenResponse.ok) {
+
+            throw new Error(
+              `Token request failed: HTTP ${tokenResponse.status}`
+            );
+
+          }
+
+
+          const tokenData =
+            await tokenResponse.json();
+
+
+          if (!tokenData.url) {
+
+            throw new Error(
+              'Token API returned no stream URL'
+            );
+
+          }
+
+
+          /*
+           * Replace the original unprotected URL with
+           * the tokenized URL BEFORE JWPlayer sees it.
+           */
+
+          url =
+            tokenData.url;
 
         }
 
+      } catch (err) {
+
+        console.error(
+          'Flussonic token error:',
+          err
+        );
+
+
+        /*
+         * If a protected Flussonic URL failed to obtain
+         * a token, do NOT attempt the original URL.
+         *
+         * This prevents an unnecessary 403 request.
+         */
+
+        if (protectedFlussonic) {
+          return;
+        }
+
       }
+
+
+      /*
+       * =====================================================
+       * NORMAL STREAM DETECTION
+       * =====================================================
+       *
+       * Protected Flussonic URLs reach this point already
+       * tokenized.
+       *
+       * Non-protected M3U8 URLs are checked normally.
+       *
+       * IFRAME URLs are handled normally.
+       */
+
+      const useJW =
+        await isM3U8(url);
 
 
       /*
