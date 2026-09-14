@@ -1,2259 +1,1972 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FutbolX - Watch Live</title>
-  <meta name="description" content="FutbolX - Watch live PPV boxing, UFC, Basketball, Football, and more.">
-  <meta name="keywords" content="futbolx, ppv, free ppv, boxing, ufc, basketball, football, stream, online, free">
-  <meta property="og:title" content="FutbolX - Watch Live" />
-  <meta property="og:url" content="https://futbol-x.site/live" />
-  <meta property="og:image" content="/assets/img/og-image.jpg">
-  <meta name="twitter:title" content="FutbolX - Watch Live">
-  <meta name="twitter:description" content="Watch live PPV boxing and other content on FutbolX.">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-  <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900|outfit:300,400,500,600,700" rel="stylesheet">
-
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
-        integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
-
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
-
-  <script src="https://cdn.jwplayer.com/libraries/IDzF9Zmk.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
-  <link rel="stylesheet" href="/assets/css/main.css?v=24">
-
-  <style>
-    :root {
-      --fx-bg: #07080b;
-      --fx-surface: #0f1118;
-      --fx-surface-hover: #171a26;
-      --fx-glass: rgba(15, 17, 24, 0.75);
-      --fx-glass-border: rgba(255, 255, 255, 0.08);
-      --fx-accent: #ff3b30;
-      --fx-accent-glow: rgba(255, 59, 48, 0.35);
-      --fx-gold: #ffc107;
-      --fx-text-main: #f1f5f9;
-      --fx-text-muted: #94a3b8;
-      --fx-radius: 14px;
-    }
-
-    [data-bs-theme="light"] {
-      --fx-bg: #f8fafc;
-      --fx-surface: #ffffff;
-      --fx-surface-hover: #f1f5f9;
-      --fx-glass: rgba(255, 255, 255, 0.85);
-      --fx-glass-border: rgba(0, 0, 0, 0.08);
-      --fx-text-main: #0f172a;
-      --fx-text-muted: #64748b;
-    }
-
-    body {
-      background-color: var(--fx-bg) !important;
-      color: var(--fx-text-main);
-      font-family: 'Outfit', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .top-bar {
-      background: var(--fx-glass) !important;
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      border-bottom: 1px solid var(--fx-glass-border);
-      padding: 12px 0;
-      transition: all 0.3s ease;
-    }
-
-    .top-bar .container-fluid {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      max-width: 1600px;
-    }
-
-    #sidebarToggler {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--fx-glass-border);
-      color: var(--fx-text-main);
-      border-radius: 10px;
-      padding: 8px 14px;
-      transition: all 0.2s ease;
-    }
-
-    #sidebarToggler:hover {
-      background: rgba(255, 255, 255, 0.12);
-      transform: scale(1.03);
-    }
-
-    .futbolx-brand {
-      font-family: 'Kanit', sans-serif;
-      font-weight: 900;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--fx-text-main);
-      display: inline-flex;
-      align-items: center;
-      user-select: none;
-      text-decoration: none;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      cursor: pointer;
-      text-shadow: none !important;
-      filter: none !important;
-    }
-
-    .futbolx-brand .ball-o {
-      color: var(--fx-gold);
-      font-size: 1.25rem;
-      margin: 0 2px;
-      filter: none !important;
-      text-shadow: none !important;
-      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      display: inline-block;
-    }
-
-    .futbolx-brand:hover .ball-o {
-      transform: rotate(180deg) scale(1.1);
-    }
-
-    .futbolx-brand .ball-o.spinning {
-      animation: ballSpin 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    @keyframes ballSpin {
-      0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.3); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-
-    .offcanvas {
-      background-color: var(--fx-surface) !important;
-      border-right: 1px solid var(--fx-glass-border) !important;
-    }
-
-    .offcanvas-header {
-      border-bottom: 1px solid var(--fx-glass-border);
-    }
-
-    .offcanvas .nav-link {
-      color: var(--fx-text-main);
-      font-weight: 500;
-      padding: 12px 16px;
-      border-radius: 10px;
-      transition: all 0.2s ease;
-      margin-bottom: 4px;
-    }
-
-    .offcanvas .nav-link:hover {
-      background: var(--fx-surface-hover);
-      color: var(--fx-accent);
-      transform: translateX(4px);
-    }
-
-    .tip-container {
-      max-width: 600px;
-      margin: 20px auto;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .alert-info {
-      text-align: center;
-      position: relative;
-      padding-right: 40px !important;
-    }
-
-    .error-alert {
-      max-width: 500px;
-      margin: 20px auto;
-    }
-
-    .fade-out {
-      animation: fadeOut .5s forwards;
-    }
-
-    @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%;
-      background: #000;
-      border-radius: 10px;
-      overflow: hidden;
-      display: none;
-      margin-bottom: 1rem;
-    }
-
-    #oplayer-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #socialOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.95);
-      z-index: 10000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(8px);
-    }
-
-    .social-card {
-      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-      border: 2px solid var(--fx-accent);
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 0 30px var(--fx-accent-glow);
-    }
-
-    .social-card h2 {
-      color: var(--fx-accent);
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .social-card p {
-      color: #ddd;
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
-    .social-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .btn-social {
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .btn-discord {
-      background: #5865F2;
-      color: white;
-    }
-
-    .btn-telegram {
-      background: #0088cc;
-      color: white;
-    }
-
-    .btn-social:hover {
-      transform: scale(1.03);
-      opacity: 0.9;
-      color: white;
-    }
-
-    .live-title {
-      text-align: center;
-      background: linear-gradient(135deg, #1a1a1a, #0b1f33);
-      padding: 12px 20px;
-      border-radius: 12px;
-      border: 2px solid var(--fx-accent);
-      box-shadow: 0 0 20px var(--fx-accent-glow);
-      margin: 1rem 0;
-    }
-
-    .live-title h3 {
-      margin: 0;
-      color: #fff;
-      font-size: 1.8rem;
-      font-weight: 600;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    }
-
-    .live-title::before {
-      content: "● LIVE";
-      color: var(--fx-accent);
-      font-weight: bold;
-      margin-right: 10px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.4; }
-      100% { opacity: 1; }
-    }
-
-    #statusArea {
-      text-align: center;
-      padding: 30px 15px;
-      background: rgba(30,30,30,0.7);
-      border-radius: 12px;
-      margin: 25px auto;
-      max-width: 720px;
-    }
-
-    #eventTitle {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
-      color: var(--fx-accent);
-    }
-
-    .countdown-display {
-      font-size: 4rem;
-      font-weight: bold;
-      color: var(--fx-accent);
-      letter-spacing: 5px;
-      margin: 20px 0;
-      text-shadow: 0 0 20px var(--fx-accent-glow);
-    }
-
-    .permanent-noti {
-      background: linear-gradient(135deg, #1e3a5f, #2a4a7a);
-      border-color: #4a8cff;
-      color: #e0f0ff;
-      text-align: center;
-      position: relative;
-    }
-
-    .disclaimer {
-      text-align: center;
-      font-size: 0.85rem;
-      padding: 20px 15px;
-      margin-top: 30px;
-      border-top: 1px solid #444;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    [data-bs-theme="dark"] .disclaimer {
-      color: #aaa;
-      background: rgba(0,0,0,0.3);
-      border-top-color: #444;
-    }
-
-    .stream-dropdown-container {
-      max-width: 540px;
-      margin-bottom: 1rem;
-    }
-
-    .stream-select-custom {
-      width: 100%;
-      min-height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      background: #0b1020 !important;
-      color: #e7edf5 !important;
-      border: 2px solid var(--fx-accent) !important;
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: none;
-      transition: border-color .18s ease, background .18s ease;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .stream-select-custom:hover,
-    .stream-select-custom:focus-visible {
-      border-color: var(--fx-accent) !important;
-      background: #0e1424 !important;
-      outline: none;
-    }
-
-    .stream-select-custom .stream-select-value {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .stream-select-custom .stream-select-arrow {
-      color: var(--fx-accent);
-      flex: 0 0 auto;
-      transition: transform .18s ease;
-    }
-
-    .stream-select-custom.is-open .stream-select-arrow {
-      transform: rotate(180deg);
-    }
-
-    .stream-popup-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 11000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, .68);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-    }
-
-    .stream-popup-overlay.is-open {
-      display: flex;
-    }
-
-    .stream-popup {
-      width: min(460px, 100%);
-      max-height: min(620px, calc(100vh - 40px));
-      overflow: hidden;
-      background: #202126;
-      color: #f4f4f5;
-      border: 1px solid #3a3b40;
-      border-radius: 16px;
-      box-shadow: 0 18px 55px rgba(0,0,0,.65);
-      animation: streamPopupIn .16s ease-out;
-    }
-
-    @keyframes streamPopupIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px) scale(.98);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .stream-popup-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 20px;
-      border-bottom: 1px solid #3a3b40;
-      font-size: 1.05rem;
-      font-weight: 700;
-    }
-
-    .stream-popup-close {
-      width: 34px;
-      height: 34px;
-      border: 0;
-      border-radius: 50%;
-      background: transparent;
-      color: #aeb0b7;
-      font-size: 1.25rem;
-      cursor: pointer;
-    }
-
-    .stream-popup-close:hover,
-    .stream-popup-close:focus-visible {
-      background: #303137;
-      color: #fff;
-      outline: none;
-    }
-
-    .stream-popup-options {
-      max-height: calc(100vh - 150px);
-      overflow-y: auto;
-    }
-
-    .stream-popup-option {
-      width: 100%;
-      min-height: 64px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 20px;
-      border: 0;
-      border-bottom: 1px solid #393a3f;
-      background: transparent;
-      color: #f1f1f3;
-      text-align: left;
-      font: inherit;
-      cursor: pointer;
-      transition: background .15s ease;
-    }
-
-    .stream-popup-option:last-child {
-      border-bottom: 0;
-    }
-
-    .stream-popup-option:hover,
-    .stream-popup-option:focus-visible {
-      background: #2b2c31;
-      outline: none;
-    }
-
-    .stream-popup-radio {
-      width: 22px;
-      height: 22px;
-      border: 2px solid #8e9098;
-      border-radius: 50%;
-      flex: 0 0 22px;
-      display: grid;
-      place-items: center;
-    }
-
-    .stream-popup-option.selected .stream-popup-radio {
-      border-color: var(--fx-accent);
-    }
-
-    .stream-popup-option.selected .stream-popup-radio::after {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--fx-accent);
-    }
-
-    @media (max-width: 600px) {
-      .stream-popup-overlay {
-        padding: 14px;
-      }
-
-      .stream-popup {
-        width: 100%;
-        border-radius: 14px;
-      }
-
-      .stream-popup-header {
-        padding: 16px;
-      }
-
-      .stream-popup-option {
-        padding: 14px 16px;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .stream-popup {
-        width: 500px;
-      }
-    }
-
-    .btn-fx-accent {
-      --bs-btn-color: #fff;
-      --bs-btn-bg: #ff3b30;
-      --bs-btn-border-color: #ff3b30;
-      --bs-btn-hover-color: #fff;
-      --bs-btn-hover-bg: #e0281b;
-      --bs-btn-hover-border-color: #e0281b;
-      --bs-btn-focus-shadow-rgb: 255, 59, 48;
-      --bs-btn-active-color: #fff;
-      --bs-btn-active-bg: #d32f2f;
-      --bs-btn-active-border-color: #d32f2f;
-      font-weight: 700;
-    }
-
-    .btn-outline-fx-accent {
-      --bs-btn-color: #ff3b30;
-      --bs-btn-border-color: #ff3b30;
-      --bs-btn-hover-color: #fff;
-      --bs-btn-hover-bg: #ff3b30;
-      --bs-btn-hover-border-color: #ff3b30;
-      --bs-btn-focus-shadow-rgb: 255, 59, 48;
-      --bs-btn-active-color: #fff;
-      --bs-btn-active-bg: #e0281b;
-      --bs-btn-active-border-color: #d32f2f;
-    }
-
-    .text-fx-accent {
-      color: #ff3b30 !important;
-    }
-
-    .alert-fx-danger {
-      --bs-alert-color: #bae6fd;
-      --bs-alert-bg: rgba(8, 47, 73, 0.55);
-      --bs-alert-border-color: rgba(56, 189, 248, 0.5);
-    }
-
-    .btn-back {
-      background: #ff3b30 !important;
-      border-color: #ff3b30 !important;
-      color: #fff !important;
-      font-weight: 700;
-      box-shadow: none;
-    }
-
-    .btn-back:hover {
-      background: #e0281b !important;
-      border-color: #e0281b !important;
-      color: #fff !important;
-    }
-
-    #futbolx-chat-mount {
-      width: 100%;
-    }
-
-    .main-content {
-      padding-top: 70px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div id="socialOverlay">
-    <div class="social-card">
-      <h2>Join Our Community</h2>
-
-      <p>
-        Join us on our socials for live updates, event requests,
-        and to report any site issues. You'll get full access once you join!
-      </p>
-
-      <div class="social-btns">
-        <a href="https://discord.gg/6Rm347EkV2"
-           target="_blank"
-           class="btn-social btn-discord social-join-btn">
-          <i class="fab fa-discord"></i> Join Our Discord
-        </a>
-
-        <a href="https://t.me/+H-GY0RZpdHc3ZDdl"
-           target="_blank"
-           class="btn-social btn-telegram social-join-btn">
-          <i class="fab fa-telegram"></i> Join Our Telegram
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <nav class="top-bar fixed-top">
-    <div class="container-fluid">
-
-      <button class="btn"
-              type="button"
-              id="sidebarToggler"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sidebarMenu"
-              aria-controls="sidebarMenu">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <a href="/" class="futbolx-brand" id="brandLogo">
-        FUTB<i class="fas fa-futbol ball-o" id="logoBall"></i>L-X
-      </a>
-
-    </div>
-  </nav>
-
-  <div class="offcanvas offcanvas-start"
-       tabindex="-1"
-       id="sidebarMenu"
-       aria-labelledby="sidebarMenuLabel">
-
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title"
-          style="font-family: 'Kanit'; font-weight: 700;">
-        NAVIGATION
-      </h5>
-
-      <button type="button"
-              class="btn-close text-reset"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close">
-      </button>
-    </div>
-
-    <div class="offcanvas-body">
-      <ul class="nav flex-column">
-
-        <li class="nav-item">
-          <a class="nav-link" href="/">
-            <i class="fas fa-house me-3"></i>Home
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link"
-             href="https://discord.gg/CmRcPbBB2k"
-             target="_blank">
-            <i class="fab fa-discord me-3"></i>Discord
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/vip">
-            <i class="fas fa-crown me-3"
-               style="color: var(--fx-gold);"></i>VIP
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link"
-             href="/auth/login"
-             id="loginLink">
-            <i class="fas fa-user me-3"></i>Login
-          </a>
-        </li>
-
-        <li class="nav-item mt-3">
-          <button id="themeToggle"
-                  class="nav-link btn btn-link w-100 text-start"
-                  aria-label="Toggle theme">
-            <i class="fas fa-moon me-3"></i>Toggle Theme
-          </button>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-
-  <div class="container-fluid main-content">
-
-    <div class="container-xl mt-4">
-
-      <div class="row">
-
-        <div class="col-12">
-
-          <div class="tip-container">
-
-            <div class="alert alert-info alert-dismissible fade show permanent-noti"
-                 id="joinAlert"
-                 role="alert">
-
-              <strong>Join us</strong> on
-
-              <a href="https://discord.gg/UzHzerb6XY"
-                 target="_blank"
-                 rel="noopener"
-                 class="alert-link text-decoration-underline">
-                Discord
-              </a>
-
-              and
-
-              <a href="https://t.me/+H-GY0RZpdHc3ZDdl"
-                 target="_blank"
-                 rel="noopener"
-                 class="alert-link text-decoration-underline">
-                Telegram
-              </a>
-
-              <button type="button"
-                      class="btn-close btn-close-white"
-                      data-bs-dismiss="alert"
-                      aria-label="Close">
-              </button>
-
-            </div>
-
-            <div class="alert alert-info alert-dismissible fade show permanent-noti"
-                 id="infoAlert"
-                 role="alert">
-
-              <strong>Info:</strong>
-              If stream is not loading on your end, try using a VPN to bypass your ISP restrictions.
-
-              <button type="button"
-                      class="btn-close btn-close-white"
-                      data-bs-dismiss="alert"
-                      aria-label="Close">
-              </button>
-
-            </div>
-
-          </div>
-
-          <div class="d-flex align-items-center mb-3">
-
-            <a href="/" class="btn btn-back">
-              <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
-
-            <button id="startLivestream"
-                    class="btn btn-fx-accent ms-3"
-                    style="display:none;">
-              Click to Start Livestream
-            </button>
-
-          </div>
-
-          <div id="liveStreamTitle" class="live-title d-none">
-            <h3 id="currentStreamName"></h3>
-          </div>
-
-          <div id="statusArea">
-
-            <h2 id="eventTitle" class="mb-3"></h2>
-
-            <div id="countdownDisplay"
-                 class="countdown-display">
-            </div>
-
-            <p id="statusMessage"
-               class="status-message">
-              This event has not started yet.
-            </p>
-
-          </div>
-
-          <div class="row g-4 mt-2">
-
-            <div class="col-12 col-lg-8">
-
-              <div class="video-container"
-                   id="mainVideoContainer">
-
-                <iframe id="embedPlayer"
-                        src="about:blank"
-                        frameborder="0"
-                        allowfullscreen
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                </iframe>
-
-                <div id="oplayer-container"></div>
-
-              </div>
-
-              <div id="streamLinksContainer"
-                   class="stream-dropdown-container mt-3"
-                   style="display:none;">
-
-                <label for="streamSelect"
-                       class="form-label small text-muted font-weight-bold mb-1">
-                  <i class="fas fa-tv"></i> SELECT STREAM SOURCE
-                </label>
-
-                <button type="button"
-                        id="streamSelect"
-                        class="stream-select-custom"
-                        aria-haspopup="dialog"
-                        aria-expanded="false">
-
-                  <span id="streamSelectLabel"
-                        class="stream-select-value">
-                    Select stream source
-                  </span>
-
-                  <i class="fas fa-chevron-down stream-select-arrow"
-                     aria-hidden="true">
-                  </i>
-
-                </button>
-
-              </div>
-
-              <div id="streamPopupOverlay"
-                   class="stream-popup-overlay"
-                   aria-hidden="true">
-
-                <div class="stream-popup"
-                     role="dialog"
-                     aria-modal="true"
-                     aria-labelledby="streamPopupTitle">
-
-                  <div class="stream-popup-header">
-
-                    <span id="streamPopupTitle">
-                      Select Stream Source
-                    </span>
-
-                    <button type="button"
-                            id="streamPopupClose"
-                            class="stream-popup-close"
-                            aria-label="Close">
-
-                      <i class="fas fa-times"></i>
-
-                    </button>
-
-                  </div>
-
-                  <div id="streamPopupOptions"
-                       class="stream-popup-options">
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="col-12 col-lg-4">
-              <div id="futbolx-chat-mount"></div>
-            </div>
-
-          </div>
-
-          <div id="errorContainer"
-               class="alert alert-fx-danger error-alert mt-3 d-none">
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <footer class="container-fluid d-flex flex-column flex-lg-row justify-content-lg-between align-items-center py-2 border-top mt-5">
-
-    <p class="mb-2 mb-lg-0 text-body-secondary text-center text-lg-start">
-      FutbolX 2026
-    </p>
-
-    <ul class="nav justify-content-center justify-content-lg-end mb-0">
-
-      <li class="nav-item">
-        <a href="/vip"
-           class="nav-link px-2 text-body-secondary">
-          Donate / VIP Access
-        </a>
-      </li>
-
-    </ul>
-
-  </footer>
-
-  <div class="disclaimer">
-    We DO NOT host nor transmit any audiovisual content itself...
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/js/api.js"></script>
-  <script src="/assets/js/auth.js"></script>
-  <script type="module" src="/chat/loader.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-      const brandLogo = document.getElementById('brandLogo');
-      const logoBall = document.getElementById('logoBall');
-
-      if (brandLogo && logoBall) {
-
-        brandLogo.addEventListener('click', () => {
-
-          logoBall.classList.add('spinning');
-
-          setTimeout(() => {
-            logoBall.classList.remove('spinning');
-          }, 600);
-
-        });
-
-      }
-
-    });
-  </script>
-
-  <script>
-
-    const OVERLAY_KEY = 'futbolx_social_join';
-    const overlay = document.getElementById('socialOverlay');
-
-    function checkOverlay() {
-
-      const lastJoin = localStorage.getItem(OVERLAY_KEY);
-      const now = Date.now();
-
-      if (!lastJoin || (now - lastJoin > 86400000)) {
-        overlay.style.display = 'flex';
-      }
-
-    }
-
-    document.querySelectorAll('.social-join-btn').forEach(btn => {
-
-      btn.addEventListener('click', () => {
-
-        localStorage.setItem(OVERLAY_KEY, Date.now());
-        overlay.style.display = 'none';
-
-      });
-
-    });
-
-    checkOverlay();
-
-    let playerInstance = null;
-    let eventStartTime = null;
-    let eventEndTime = null;
-    let streamStarted = false;
-    let foundEvent = null;
-
-    const PRE_LIVE_BUFFER = 900;
-
-    let realActivePresenceCount = 0;
-    let calculatedViewerSimulationState = 0;
-    let liveWindowActive = false;
-
-    const htmlEl = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-
-    htmlEl.setAttribute('data-bs-theme', savedTheme);
-
-    if (themeToggle) {
-
-      themeToggle.innerHTML =
-        savedTheme === 'dark'
-          ? '<i class="fas fa-moon me-3"></i>Toggle Theme'
-          : '<i class="fas fa-sun me-3"></i>Toggle Theme';
-
-      themeToggle.addEventListener('click', () => {
-
-        const current =
-          htmlEl.getAttribute('data-bs-theme');
-
-        const next =
-          current === 'dark' ? 'light' : 'dark';
-
-        htmlEl.setAttribute('data-bs-theme', next);
-
-        localStorage.setItem('theme', next);
-
-        themeToggle.innerHTML =
-          next === 'dark'
-            ? '<i class="fas fa-moon me-3"></i>Toggle Theme'
-            : '<i class="fas fa-sun me-3"></i>Toggle Theme';
-
-      });
-
-    }
-
-    async function fetchWithRetry(url, maxRetries = 3, delay = 1000) {
-
-      return new Promise((resolve, reject) => {
-
-        let attempts = 0;
-
-        function attempt() {
-
-          attempts++;
-
-          fetch(url, {
-            signal: AbortSignal.timeout(5000)
-          })
-
-          .then(res => {
-
-            if (!res.ok) {
-              throw new Error(`HTTP ${res.status}`);
-            }
-
-            return res.json();
-
-          })
-
-          .then(data => resolve(data))
-
-          .catch(err => {
-
-            if (attempts < maxRetries) {
-              setTimeout(attempt, delay);
-            } else {
-              reject(err);
-            }
-
-          });
-
-        }
-
-        attempt();
-
-      });
-
-    }
-
-    async function isM3U8(url) {
-
-      if (url.toLowerCase().includes('.m3u8')) {
-        return true;
-      }
-
-      try {
-
-        const r = await fetch(url, {
-          method: 'HEAD'
-        });
-
-        return (
-          r.headers.get('content-type') || ''
-        ).includes('mpegurl');
-
-      } catch {
-
-        return false;
-
-      }
-
-    }
-
-
-    /*
-     * =====================================================
-     * AUTOMATIC FLUSSONIC TOKEN HANDLING
-     * =====================================================
-     *
-     * No Flussonic server/domain is hardcoded here.
-     *
-     * Every M3U8 URL is sent to /api/token.
-     *
-     * The backend decides automatically whether the URL
-     * belongs to one of the configured Flussonic servers.
-     *
-     * If it is protected, the backend returns a fresh
-     * tokenized M3U8 URL.
-     *
-     * Normal/non-Flussonic M3U8 streams continue normally.
-     */
-
-    async function playStream(url) {
-
-      if (playerInstance) {
-
-        try {
-          playerInstance.remove();
-        } catch (_) {}
-
-        playerInstance = null;
-
-      }
-
-
-      let tokenized = false;
-
-      /*
-       * =====================================================
-       * AUTOMATIC TOKEN REQUEST
-       * =====================================================
-       */
-
-      try {
-
-        const parsedUrl =
-          new URL(url);
-
-        const looksLikeM3U8 =
-          parsedUrl.pathname
-            .toLowerCase()
-            .includes('.m3u8') ||
-          parsedUrl.href
-            .toLowerCase()
-            .includes('.m3u8');
-
-
-        /*
-         * Only M3U8 streams need token processing.
-         *
-         * The backend decides whether the M3U8 belongs
-         * to a protected Flussonic server.
-         */
-
-        if (looksLikeM3U8) {
-
-          console.log(
-            'CHECKING STREAM FOR FLUSSONIC TOKEN:',
-            url
-          );
-
-
-          const tokenResponse =
-            await fetch(
-              `/api/token?url=${encodeURIComponent(url)}`,
-              {
-                method: 'GET',
-                cache: 'no-store',
-                signal: AbortSignal.timeout(5000)
-              }
-            );
-
-
-          console.log(
-            'TOKEN API STATUS:',
-            tokenResponse.status
-          );
-
-
-          if (tokenResponse.ok) {
-
-            const tokenData =
-              await tokenResponse.json();
-
-
-            console.log(
-              'TOKEN API RESPONSE:',
-              tokenData
-            );
-
-
-            /*
-             * If backend says this is a protected
-             * Flussonic stream, use ONLY the returned
-             * tokenized URL.
-             */
-
-            if (
-              tokenData.protected === true &&
-              tokenData.url
-            ) {
-
-              url =
-                tokenData.url;
-
-              tokenized = true;
-
-
-              console.log(
-                'TOKENIZED M3U8 SENT TO JWPLAYER:',
-                url
-              );
-
-            }
-
-          }
-
-        }
-
-      } catch (err) {
-
-        console.error(
-          'FLUSSONIC TOKEN PROCESSING ERROR:',
-          err
-        );
-
-      }
-
-
-      /*
-       * =====================================================
-       * PLAYBACK
-       * =====================================================
-       *
-       * Tokenized Flussonic streams go directly to JWPlayer.
-       *
-       * Normal M3U8 streams are detected normally.
-       *
-       * Non-M3U8 streams continue using the iframe exactly
-       * as before.
-       */
-
-      if (tokenized) {
-
-        initActualPlayer(
-          url,
-          true
-        );
-
-        return;
-
-      }
-
-
-      const useJW =
-        await isM3U8(url);
-
-      initActualPlayer(
-        url,
-        useJW
-      );
-
-    }
-
-
-    function initActualPlayer(url, useJW) {
-
-      if (useJW) {
-
-        document.getElementById(
-          'embedPlayer'
-        ).style.display = 'none';
-
-        const container =
-          document.getElementById(
-            'oplayer-container'
-          );
-
-        container.style.display = 'block';
-
-        container.innerHTML =
-          '<div id="jw-player"></div>';
-
-
-        /*
-         * =====================================================
-         * JWPLAYER
-         * =====================================================
-         */
-
-        playerInstance =
-          jwplayer("jw-player").setup({
-
-            file: url,
-
-            type: "hls",
-
-            autostart: false,
-
-            mute: true,
-
-            width: "100%",
-
-            aspectratio: "16:9",
-
-            cast: {}
-
-          });
-
-
-        /*
-         * Diagnostic logging.
-         */
-
-        playerInstance.on(
-          'ready',
-          () => {
-
-            console.log(
-              'JWPLAYER READY'
-            );
-
-            console.log(
-              'JWPLAYER URL:',
-              url
-            );
-
-
-            const triggerAd = () => {
-
-              const host =
-                window.location.hostname.toLowerCase();
-
-
-              /*
-               * =====================================================
-               * FUTBOL-X.TOP ONLY
-               * =====================================================
-               */
-
-              if (
-                host === 'futbol-x.top' ||
-                host === 'www.futbol-x.top'
-              ) {
-
-                const popunderScript =
-                  document.createElement('script');
-
-                popunderScript.src =
-                  "https://pl29465843.effectivecpmnetwork.com/ed/a2/e5/eda2e566755b4b6a812d6d5af6d26193.js";
-
-                document.body.appendChild(
-                  popunderScript
-                );
-
-                window.open(
-                  "https://omg10.com/4/11347966",
-                  "_blank"
-                );
-
-              }
-
-
-              /*
-               * =====================================================
-               * FUTBOL-X.XYZ ONLY
-               * =====================================================
-               */
-
-              else if (
-                host === 'futbol-x.xyz' ||
-                host === 'www.futbol-x.xyz'
-              ) {
-
-                const xyzAd =
-                  document.createElement('script');
-
-                xyzAd.src =
-                  "https://pl30323849.profitableratecpmnetwork.com/d0/10/64/d0106475f853258aa2f6b743cb58e857.js";
-
-                document.body.appendChild(
-                  xyzAd
-                );
-
-                window.open(
-                  "https://omg10.com/4/11786340",
-                  "_blank"
-                );
-
-              }
-
-
-              /*
-               * =====================================================
-               * FUTBOL-X.SRYZE.CC ONLY
-               * =====================================================
-               */
-
-              else if (
-                host === 'futbol-x.sryze.cc'
-              ) {
-
-                const sryzeAd =
-                  document.createElement('script');
-
-                sryzeAd.src =
-                  "https://pl31234277.profitableratecpmnetwork.com/26/f5/c1/26f5c129f60af79adf85224f1074b93d.js";
-
-                document.body.appendChild(
-                  sryzeAd
-                );
-
-              }
-
-
-              container.removeEventListener(
-                'click',
-                triggerAd
-              );
-
-            };
-
-
-            container.addEventListener(
-              'click',
-              triggerAd
-            );
-
-          }
-        );
-
-
-        playerInstance.on(
-          'error',
-          (error) => {
-
-            console.error(
-              'JWPLAYER ERROR:',
-              error
-            );
-
-            console.error(
-              'JWPLAYER STREAM URL:',
-              url
-            );
-
-          }
-        );
-
-
-        playerInstance.on(
-          'playlistItem',
-          (item) => {
-
-            console.log(
-              'JWPLAYER PLAYLIST ITEM:',
-              item
-            );
-
-          }
-        );
-
-
-      } else {
-
-        document.getElementById(
-          'oplayer-container'
-        ).style.display = 'none';
-
-        const iframe =
-          document.getElementById(
-            'embedPlayer'
-          );
-
-        iframe.style.display = 'block';
-
-        try {
-
-          const u =
-            new URL(url);
-
-          u.searchParams.set(
-            'autoplay',
-            '0'
-          );
-
-          iframe.src =
-            u.toString();
-
-        } catch {
-
-          iframe.src =
-            url;
-
-        }
-
-      }
-
-    }
-
-
-    function populateStreamDropdown(event) {
-
-      const picker =
-        document.getElementById('streamSelect');
-
-      const label =
-        document.getElementById('streamSelectLabel');
-
-      const overlay =
-        document.getElementById('streamPopupOverlay');
-
-      const optionsContainer =
-        document.getElementById('streamPopupOptions');
-
-      const closeButton =
-        document.getElementById('streamPopupClose');
-
-      if (
-        !picker ||
-        !label ||
-        !overlay ||
-        !optionsContainer
-      ) {
-        return;
-      }
-
-      const streams =
-        Array.isArray(event.streams)
-          ? event.streams
-          : [];
-
-      optionsContainer.innerHTML =
-        streams.map((s, i) => {
-
-          const realUrl =
-            typeof s === 'string'
-              ? s
-              : s.url;
-
-          const title =
-            typeof s === 'string'
-              ? `Stream ${i + 1}`
-              : (s.title || `Stream ${i + 1}`);
-
-          const payload =
-            btoa(
-              btoa(realUrl) +
-              '||' +
-              Math.random()
-                .toString(36)
-                .slice(2, 10)
-            );
-
-          return `
-            <button type="button"
-                    class="stream-popup-option${i === 0 ? ' selected' : ''}"
-                    data-value="${payload}"
-                    data-title="${String(title).replace(/"/g, '&quot;')}">
-
-              <span class="stream-popup-radio"
-                    aria-hidden="true">
-              </span>
-
-              <span>${title}</span>
-
-            </button>
-          `;
-
-        }).join('');
-
-      const openPopup = () => {
-
-        overlay.classList.add('is-open');
-
-        overlay.setAttribute(
-          'aria-hidden',
-          'false'
-        );
-
-        picker.classList.add('is-open');
-
-        picker.setAttribute(
-          'aria-expanded',
-          'true'
-        );
-
-        document.body.style.overflow = 'hidden';
-
-        const firstOption =
-          optionsContainer.querySelector(
-            '.stream-popup-option'
-          );
-
-        if (firstOption) {
-          firstOption.focus();
-        }
-
-      };
-
-      const closePopup = () => {
-
-        overlay.classList.remove('is-open');
-
-        overlay.setAttribute(
-          'aria-hidden',
-          'true'
-        );
-
-        picker.classList.remove('is-open');
-
-        picker.setAttribute(
-          'aria-expanded',
-          'false'
-        );
-
-        document.body.style.overflow = '';
-
-        picker.focus();
-
-      };
-
-      picker.onclick = openPopup;
-
-      picker.onkeydown = (e) => {
-
-        if (
-          e.key === 'Enter' ||
-          e.key === ' '
-        ) {
-
-          e.preventDefault();
-
-          openPopup();
-
-        }
-
-      };
-
-      closeButton.onclick = closePopup;
-
-      overlay.onclick = (e) => {
-
-        if (e.target === overlay) {
-          closePopup();
-        }
-
-      };
-
-      optionsContainer
-        .querySelectorAll(
-          '.stream-popup-option'
-        )
-        .forEach(option => {
-
-          option.onclick = () => {
-
-            const realUrl =
-              atob(
-                atob(option.dataset.value)
-                  .split('||')[0]
-              );
-
-            const title =
-              option.dataset.title || 'Stream';
-
-            playStream(realUrl);
-
-            label.textContent =
-              title;
-
-            document.getElementById(
-              'currentStreamName'
-            ).innerHTML =
-              title;
-
-            optionsContainer
-              .querySelectorAll(
-                '.stream-popup-option'
-              )
-              .forEach(item =>
-                item.classList.remove(
-                  'selected'
-                )
-              );
-
-            option.classList.add(
-              'selected'
-            );
-
-            closePopup();
-
-          };
-
-        });
-
-      if (streams.length) {
-
-        const first =
-          streams[0];
-
-        label.textContent =
-          typeof first === 'string'
-            ? 'Stream 1'
-            : (first.title || 'Main Feed');
-
-      }
-
-      if (!window.__futbolxStreamEscapeHandler) {
-
-        window.__futbolxStreamEscapeHandler = true;
-
-        document.addEventListener(
-          'keydown',
-          (e) => {
-
-            if (e.key === 'Escape') {
-
-              const currentOverlay =
-                document.getElementById(
-                  'streamPopupOverlay'
-                );
-
-              if (
-                currentOverlay &&
-                currentOverlay.classList.contains(
-                  'is-open'
-                )
-              ) {
-
-                currentOverlay.classList.remove(
-                  'is-open'
-                );
-
-                currentOverlay.setAttribute(
-                  'aria-hidden',
-                  'true'
-                );
-
-                const currentPicker =
-                  document.getElementById(
-                    'streamSelect'
-                  );
-
-                if (currentPicker) {
-
-                  currentPicker.classList.remove(
-                    'is-open'
-                  );
-
-                  currentPicker.setAttribute(
-                    'aria-expanded',
-                    'false'
-                  );
-
-                  currentPicker.focus();
-
-                }
-
-                document.body.style.overflow = '';
-
-              }
-
-            }
-
-          }
-        );
-
-      }
-
-    }
-
-
-    window.initViewerPresenceEngine = () => {
-
-      const uriName =
-        window.location.pathname
-          .split('/')
-          .pop() || 'lobby';
-
-      const channel =
-        window.globalSupabaseInstance.channel(
-          `viewers_${uriName}`
-        );
-
-      channel.on(
-        'presence',
-        { event: 'sync' },
-        () => {
-
-          const presenceState =
-            channel.presenceState();
-
-          realActivePresenceCount =
-            Object.keys(
-              presenceState
-            ).length;
-
-          window.renderConsolidatedViewers();
-
-        }
-      );
-
-      channel.subscribe(
-        async (status) => {
-
-          if (status === 'SUBSCRIBED') {
-
-            await channel.track({
-              online_at:
-                new Date().toISOString()
-            });
-
-          }
-
-        }
-      );
-
-      function executeOrganicUpdateStep() {
-
-        if (
-          !foundEvent ||
-          !foundEvent.max_simulated_viewers
-        ) {
-
-          calculatedViewerSimulationState = 0;
-
-          window.renderConsolidatedViewers();
-
-          setTimeout(
-            executeOrganicUpdateStep,
-            3000
-          );
-
-          return;
-
-        }
-
-        const maximumLimit =
-          parseInt(
-            foundEvent.max_simulated_viewers,
-            10
-          );
-
-        if (
-          isNaN(maximumLimit) ||
-          maximumLimit <= 0
-        ) {
-
-          calculatedViewerSimulationState = 0;
-
-          window.renderConsolidatedViewers();
-
-          setTimeout(
-            executeOrganicUpdateStep,
-            3000
-          );
-
-          return;
-
-        }
-
-        const operationalCapBase =
-          maximumLimit - 20;
-
-        if (
-          calculatedViewerSimulationState === 0
-        ) {
-
-          calculatedViewerSimulationState =
-            Math.floor(
-              operationalCapBase * 0.94
-            );
-
-        }
-
-        const behaviorRoll =
-          Math.random();
-
-        if (behaviorRoll < 0.45) {
-
-        } else {
-
-          const timestamp =
-            Date.now() / 60000;
-
-          const macroeconomicTrend =
-            Math.sin(timestamp) * 0.15;
-
-          let microShiftDelta =
-            Math.floor(
-              Math.random() * 7
-            ) - 3;
-
-          if (
-            calculatedViewerSimulationState >
-            (operationalCapBase + 5)
-          ) {
-
-            microShiftDelta -= 2;
-
-          } else if (
-            calculatedViewerSimulationState <
-            (operationalCapBase * 0.88)
-          ) {
-
-            microShiftDelta += 2;
-
-          } else if (
-            macroeconomicTrend > 0.05
-          ) {
-
-            microShiftDelta += 1;
-
-          } else if (
-            macroeconomicTrend < -0.05
-          ) {
-
-            microShiftDelta -= 1;
-
-          }
-
-          calculatedViewerSimulationState +=
-            microShiftDelta;
-
-          if (
-            calculatedViewerSimulationState >
-            operationalCapBase
-          ) {
-
-            calculatedViewerSimulationState =
-              operationalCapBase -
-              Math.floor(
-                Math.random() * 5
-              );
-
-          }
-
-        }
-
-        window.renderConsolidatedViewers();
-
-        const nextIntervalDelay =
-          Math.floor(
-            Math.random() * 6000
-          ) + 3500;
-
-        setTimeout(
-          executeOrganicUpdateStep,
-          nextIntervalDelay
-        );
-
-      }
-
-      setTimeout(
-        executeOrganicUpdateStep,
-        2000
-      );
-
-    };
-
-
-    window.renderConsolidatedViewers = () => {
-
-      const element =
-        document.getElementById(
-          'onlineCount'
-        );
-
-      const wrapper =
-        document.getElementById(
-          'viewerCountWrapper'
-        );
-
-      if (!element || !wrapper) {
-        return;
-      }
-
-      const nowEpoch =
-        Math.floor(
-          Date.now() / 1000
-        );
-
-      if (
-        eventStartTime &&
-        nowEpoch >= eventStartTime
-      ) {
-
-        wrapper.classList.remove(
-          'd-none'
-        );
-
-      } else {
-
-        wrapper.classList.add(
-          'd-none'
-        );
-
-      }
-
-      const totalCombinedViews =
-        realActivePresenceCount +
-        calculatedViewerSimulationState;
-
-      element.innerText =
-        totalCombinedViews;
-
-    };
-
-
-    document.addEventListener(
-      'DOMContentLoaded',
-      async () => {
-
-        const uriName =
-          window.location.pathname
-            .split('/')
-            .pop();
-
-        const startBtn =
-          document.getElementById(
-            'startLivestream'
-          );
-
-        try {
-
-          const catListRes =
-            await fetchWithRetry(
-              '/api/stream'
-            );
-
-          const fetchPromises =
-            catListRes.categories.map(
-              cat =>
-                fetchWithRetry(
-                  `/api/${cat}.json`
-                )
-                .catch(() => ({
-                  success: true,
-                  streams: []
-                }))
-            );
-
-          const allCategoryData =
-            await Promise.all(
-              fetchPromises
-            );
-
-          for (
-            const data of allCategoryData
-          ) {
-
-            for (
-              const catObj of data.streams
-            ) {
-
-              foundEvent =
-                catObj.streams.find(
-                  ev =>
-                    ev.uri_name === uriName
-                );
-
-              if (foundEvent) {
-                break;
-              }
-
-            }
-
-            if (foundEvent) {
-              break;
-            }
-
-          }
-
-          if (foundEvent) {
-
-            document.getElementById(
-              'eventTitle'
-            ).textContent =
-              foundEvent.name;
-
-            document.getElementById(
-              'chatEventTitle'
-            ).textContent =
-              foundEvent.name + " Chat";
-
-            eventStartTime =
-              new Date(
-                foundEvent.starts_at +
-                '+03:00'
-              ).getTime() / 1000;
-
-            eventEndTime =
-              foundEvent.ends_at
-                ? new Date(
-                    foundEvent.ends_at +
-                    '+03:00'
-                  ).getTime() / 1000
-                : eventStartTime + 10800;
-
-            setInterval(() => {
-
-              const now =
-                Math.floor(
-                  Date.now() / 1000
-                );
-
-              if (
-                now >=
-                  (eventStartTime -
-                    PRE_LIVE_BUFFER) &&
-                now <= eventEndTime
-              ) {
-
-                liveWindowActive = true;
-
-                document.getElementById(
-                  'statusArea'
-                ).style.display = 'none';
-
-                if (!streamStarted) {
-
-                  startBtn.style.display =
-                    'inline-block';
-
-                }
-
-              } else if (
-                now < eventStartTime
-              ) {
-
-                liveWindowActive = false;
-
-                const diff =
-                  eventStartTime - now;
-
-                const h =
-                  Math.floor(
-                    diff / 3600
-                  );
-
-                const m =
-                  Math.floor(
-                    (diff % 3600) / 60
-                  );
-
-                const s =
-                  diff % 60;
-
-                if (h >= 24) {
-
-                  const days =
-                    Math.floor(h / 24);
-
-                  const remHours =
-                    h % 24;
-
-                  document.getElementById(
-                    'countdownDisplay'
-                  ).textContent =
-                    `${days}day ${remHours}hr ${m}m ${s}s`;
-
-                } else {
-
-                  document.getElementById(
-                    'countdownDisplay'
-                  ).textContent =
-                    `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-
-                }
-
-              }
-
-            }, 1000);
-
-          }
-
-          startBtn.onclick = () => {
-
-            document.getElementById(
-              'mainVideoContainer'
-            ).style.display =
-              'block';
-
-            document.getElementById(
-              'streamLinksContainer'
-            ).style.display =
-              'block';
-
-            startBtn.style.display =
-              'none';
-
-            document.getElementById(
-              'liveStreamTitle'
-            ).classList.remove(
-              'd-none'
-            );
-
-            const dynamicInitialFeed =
-              foundEvent.streams[0];
-
-            const initialUrl =
-              typeof dynamicInitialFeed === 'string'
-                ? dynamicInitialFeed
-                : dynamicInitialFeed.url;
-
-            document.getElementById(
-              'currentStreamName'
-            ).innerHTML =
-              `${dynamicInitialFeed.title || 'Main Feed'}`;
-
-            playStream(
-              initialUrl
-            );
-
-            populateStreamDropdown(
-              foundEvent
-            );
-
-            streamStarted = true;
-
-          };
-
-        } catch (err) {}
-
-      }
-    );
-
-  </script>
-
-</body>
+<!DOCTYPE html>  <html lang="en" data-bs-theme="dark">  
+<head>  
+  <meta charset="utf-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <title>FutbolX - Watch Live</title>  
+  <meta name="description" content="FutbolX - Watch live PPV boxing, UFC, Basketball, Football, and more.">  
+  <meta name="keywords" content="futbolx, ppv, free ppv, boxing, ufc, basketball, football, stream, online, free">  
+  <meta property="og:title" content="FutbolX - Watch Live" />  
+  <meta property="og:url" content="https://futbol-x.site/live" />  
+  <meta property="og:image" content="/assets/img/og-image.jpg">  
+  <meta name="twitter:title" content="FutbolX - Watch Live">  
+  <meta name="twitter:description" content="Watch live PPV boxing and other content on FutbolX.">  
+  <meta name="twitter:card" content="summary_large_image">    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>  
+  <link href="https://fonts.bunny.net/css?family=kanit:100,200,300,400,500,600,700,800,900|outfit:300,400,500,600,700" rel="stylesheet">    <link rel="stylesheet"  
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"  
+        integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="  
+        crossorigin="anonymous"  
+        referrerpolicy="no-referrer" />    <link rel="stylesheet"  
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"  
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="  
+        crossorigin="anonymous"  
+        referrerpolicy="no-referrer" />    <script src="https://cdn.jwplayer.com/libraries/IDzF9Zmk.js"></script>    <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>    <link rel="stylesheet" href="/assets/css/main.css?v=24">    <style>  
+    :root {  
+      --fx-bg: #07080b;  
+      --fx-surface: #0f1118;  
+      --fx-surface-hover: #171a26;  
+      --fx-glass: rgba(15, 17, 24, 0.75);  
+      --fx-glass-border: rgba(255, 255, 255, 0.08);  
+      --fx-accent: #ff3b30;  
+      --fx-accent-glow: rgba(255, 59, 48, 0.35);  
+      --fx-gold: #ffc107;  
+      --fx-text-main: #f1f5f9;  
+      --fx-text-muted: #94a3b8;  
+      --fx-radius: 14px;  
+    }  
+  
+    [data-bs-theme="light"] {  
+      --fx-bg: #f8fafc;  
+      --fx-surface: #ffffff;  
+      --fx-surface-hover: #f1f5f9;  
+      --fx-glass: rgba(255, 255, 255, 0.85);  
+      --fx-glass-border: rgba(0, 0, 0, 0.08);  
+      --fx-text-main: #0f172a;  
+      --fx-text-muted: #64748b;  
+    }  
+  
+    body {  
+      background-color: var(--fx-bg) !important;  
+      color: var(--fx-text-main);  
+      font-family: 'Outfit', sans-serif;  
+      overflow-x: hidden;  
+      -webkit-font-smoothing: antialiased;  
+    }  
+  
+    .top-bar {  
+      background: var(--fx-glass) !important;  
+      backdrop-filter: blur(16px) saturate(180%);  
+      -webkit-backdrop-filter: blur(16px) saturate(180%);  
+      border-bottom: 1px solid var(--fx-glass-border);  
+      padding: 12px 0;  
+      transition: all 0.3s ease;  
+    }  
+  
+    .top-bar .container-fluid {  
+      position: relative;  
+      display: flex;  
+      align-items: center;  
+      justify-content: flex-start;  
+      max-width: 1600px;  
+    }  
+  
+    #sidebarToggler {  
+      background: rgba(255, 255, 255, 0.05);  
+      border: 1px solid var(--fx-glass-border);  
+      color: var(--fx-text-main);  
+      border-radius: 10px;  
+      padding: 8px 14px;  
+      transition: all 0.2s ease;  
+    }  
+  
+    #sidebarToggler:hover {  
+      background: rgba(255, 255, 255, 0.12);  
+      transform: scale(1.03);  
+    }  
+  
+    .futbolx-brand {  
+      font-family: 'Kanit', sans-serif;  
+      font-weight: 900;  
+      font-size: 1.5rem;  
+      text-transform: uppercase;  
+      letter-spacing: 2px;  
+      color: var(--fx-text-main);  
+      display: inline-flex;  
+      align-items: center;  
+      user-select: none;  
+      text-decoration: none;  
+      position: absolute;  
+      left: 50%;  
+      transform: translateX(-50%);  
+      cursor: pointer;  
+      text-shadow: none !important;  
+      filter: none !important;  
+    }  
+  
+    .futbolx-brand .ball-o {  
+      color: var(--fx-gold);  
+      font-size: 1.25rem;  
+      margin: 0 2px;  
+      filter: none !important;  
+      text-shadow: none !important;  
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);  
+      display: inline-block;  
+    }  
+  
+    .futbolx-brand:hover .ball-o {  
+      transform: rotate(180deg) scale(1.1);  
+    }  
+  
+    .futbolx-brand .ball-o.spinning {  
+      animation: ballSpin 0.6s cubic-bezier(0.25, 1, 0.5, 1);  
+    }  
+  
+    @keyframes ballSpin {  
+      0% { transform: rotate(0deg) scale(1); }  
+      50% { transform: rotate(180deg) scale(1.3); }  
+      100% { transform: rotate(360deg) scale(1); }  
+    }  
+  
+    .offcanvas {  
+      background-color: var(--fx-surface) !important;  
+      border-right: 1px solid var(--fx-glass-border) !important;  
+    }  
+  
+    .offcanvas-header {  
+      border-bottom: 1px solid var(--fx-glass-border);  
+    }  
+  
+    .offcanvas .nav-link {  
+      color: var(--fx-text-main);  
+      font-weight: 500;  
+      padding: 12px 16px;  
+      border-radius: 10px;  
+      transition: all 0.2s ease;  
+      margin-bottom: 4px;  
+    }  
+  
+    .offcanvas .nav-link:hover {  
+      background: var(--fx-surface-hover);  
+      color: var(--fx-accent);  
+      transform: translateX(4px);  
+    }  
+  
+    .tip-container {  
+      max-width: 600px;  
+      margin: 20px auto;  
+      overflow: hidden;  
+      display: flex;  
+      flex-direction: column;  
+      gap: 10px;  
+    }  
+  
+    .alert-info {  
+      text-align: center;  
+      position: relative;  
+      padding-right: 40px !important;  
+    }  
+  
+    .error-alert {  
+      max-width: 500px;  
+      margin: 20px auto;  
+    }  
+  
+    .fade-out {  
+      animation: fadeOut .5s forwards;  
+    }  
+  
+    @keyframes fadeOut {  
+      from { opacity: 1; }  
+      to { opacity: 0; }  
+    }  
+  
+    .video-container {  
+      position: relative;  
+      width: 100%;  
+      height: 0;  
+      padding-bottom: 56.25%;  
+      background: #000;  
+      border-radius: 10px;  
+      overflow: hidden;  
+      display: none;  
+      margin-bottom: 1rem;  
+    }  
+  
+    #oplayer-container {  
+      position: absolute;  
+      top: 0;  
+      left: 0;  
+      width: 100%;  
+      height: 100%;  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+    }  
+  
+    #socialOverlay {  
+      position: fixed;  
+      top: 0;  
+      left: 0;  
+      width: 100%;  
+      height: 100%;  
+      background: rgba(0,0,0,0.95);  
+      z-index: 10000;  
+      display: none;  
+      align-items: center;  
+      justify-content: center;  
+      backdrop-filter: blur(8px);  
+    }  
+  
+    .social-card {  
+      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);  
+      border: 2px solid var(--fx-accent);  
+      border-radius: 20px;  
+      padding: 40px;  
+      text-align: center;  
+      max-width: 500px;  
+      width: 90%;  
+      box-shadow: 0 0 30px var(--fx-accent-glow);  
+    }  
+  
+    .social-card h2 {  
+      color: var(--fx-accent);  
+      font-weight: 800;  
+      margin-bottom: 20px;  
+    }  
+  
+    .social-card p {  
+      color: #ddd;  
+      font-size: 1.1rem;  
+      margin-bottom: 30px;  
+      line-height: 1.6;  
+    }  
+  
+    .social-btns {  
+      display: flex;  
+      flex-direction: column;  
+      gap: 15px;  
+    }  
+  
+    .btn-social {  
+      padding: 12px;  
+      border-radius: 12px;  
+      font-weight: 600;  
+      text-decoration: none;  
+      transition: 0.3s;  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      gap: 10px;  
+    }  
+  
+    .btn-discord {  
+      background: #5865F2;  
+      color: white;  
+    }  
+  
+    .btn-telegram {  
+      background: #0088cc;  
+      color: white;  
+    }  
+  
+    .btn-social:hover {  
+      transform: scale(1.03);  
+      opacity: 0.9;  
+      color: white;  
+    }  
+  
+    .live-title {  
+      text-align: center;  
+      background: linear-gradient(135deg, #1a1a1a, #0b1f33);  
+      padding: 12px 20px;  
+      border-radius: 12px;  
+      border: 2px solid var(--fx-accent);  
+      box-shadow: 0 0 20px var(--fx-accent-glow);  
+      margin: 1rem 0;  
+    }  
+  
+    .live-title h3 {  
+      margin: 0;  
+      color: #fff;  
+      font-size: 1.8rem;  
+      font-weight: 600;  
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);  
+    }  
+  
+    .live-title::before {  
+      content: "● LIVE";  
+      color: var(--fx-accent);  
+      font-weight: bold;  
+      margin-right: 10px;  
+      animation: pulse 2s infinite;  
+    }  
+  
+    @keyframes pulse {  
+      0% { opacity: 1; }  
+      50% { opacity: 0.4; }  
+      100% { opacity: 1; }  
+    }  
+  
+    #statusArea {  
+      text-align: center;  
+      padding: 30px 15px;  
+      background: rgba(30,30,30,0.7);  
+      border-radius: 12px;  
+      margin: 25px auto;  
+      max-width: 720px;  
+    }  
+  
+    #eventTitle {  
+      font-size: 2.4rem;  
+      margin-bottom: 1rem;  
+      color: var(--fx-accent);  
+    }  
+  
+    .countdown-display {  
+      font-size: 4rem;  
+      font-weight: bold;  
+      color: var(--fx-accent);  
+      letter-spacing: 5px;  
+      margin: 20px 0;  
+      text-shadow: 0 0 20px var(--fx-accent-glow);  
+    }  
+  
+    .permanent-noti {  
+      background: linear-gradient(135deg, #1e3a5f, #2a4a7a);  
+      border-color: #4a8cff;  
+      color: #e0f0ff;  
+      text-align: center;  
+      position: relative;  
+    }  
+  
+    .disclaimer {  
+      text-align: center;  
+      font-size: 0.85rem;  
+      padding: 20px 15px;  
+      margin-top: 30px;  
+      border-top: 1px solid #444;  
+      max-width: 1200px;  
+      margin-left: auto;  
+      margin-right: auto;  
+    }  
+  
+    [data-bs-theme="dark"] .disclaimer {  
+      color: #aaa;  
+      background: rgba(0,0,0,0.3);  
+      border-top-color: #444;  
+    }  
+  
+    .stream-dropdown-container {  
+      max-width: 540px;  
+      margin-bottom: 1rem;  
+    }  
+  
+    .stream-select-custom {  
+      width: 100%;  
+      min-height: 58px;  
+      display: flex;  
+      align-items: center;  
+      justify-content: space-between;  
+      gap: 14px;  
+      background: #0b1020 !important;  
+      color: #e7edf5 !important;  
+      border: 2px solid var(--fx-accent) !important;  
+      border-radius: 12px;  
+      padding: 12px 16px;  
+      font-weight: 600;  
+      font-size: 1rem;  
+      cursor: pointer;  
+      box-shadow: none;  
+      transition: border-color .18s ease, background .18s ease;  
+      user-select: none;  
+      -webkit-tap-highlight-color: transparent;  
+    }  
+  
+    .stream-select-custom:hover,  
+    .stream-select-custom:focus-visible {  
+      border-color: var(--fx-accent) !important;  
+      background: #0e1424 !important;  
+      outline: none;  
+    }  
+  
+    .stream-select-custom .stream-select-value {  
+      overflow: hidden;  
+      text-overflow: ellipsis;  
+      white-space: nowrap;  
+    }  
+  
+    .stream-select-custom .stream-select-arrow {  
+      color: var(--fx-accent);  
+      flex: 0 0 auto;  
+      transition: transform .18s ease;  
+    }  
+  
+    .stream-select-custom.is-open .stream-select-arrow {  
+      transform: rotate(180deg);  
+    }  
+  
+    .stream-popup-overlay {  
+      position: fixed;  
+      inset: 0;  
+      z-index: 11000;  
+      display: none;  
+      align-items: center;  
+      justify-content: center;  
+      padding: 20px;  
+      background: rgba(0, 0, 0, .68);  
+      backdrop-filter: blur(3px);  
+      -webkit-backdrop-filter: blur(3px);  
+    }  
+  
+    .stream-popup-overlay.is-open {  
+      display: flex;  
+    }  
+  
+    .stream-popup {  
+      width: min(460px, 100%);  
+      max-height: min(620px, calc(100vh - 40px));  
+      overflow: hidden;  
+      background: #202126;  
+      color: #f4f4f5;  
+      border: 1px solid #3a3b40;  
+      border-radius: 16px;  
+      box-shadow: 0 18px 55px rgba(0,0,0,.65);  
+      animation: streamPopupIn .16s ease-out;  
+    }  
+  
+    @keyframes streamPopupIn {  
+      from {  
+        opacity: 0;  
+        transform: translateY(8px) scale(.98);  
+      }  
+      to {  
+        opacity: 1;  
+        transform: translateY(0) scale(1);  
+      }  
+    }  
+  
+    .stream-popup-header {  
+      display: flex;  
+      align-items: center;  
+      justify-content: space-between;  
+      padding: 18px 20px;  
+      border-bottom: 1px solid #3a3b40;  
+      font-size: 1.05rem;  
+      font-weight: 700;  
+    }  
+  
+    .stream-popup-close {  
+      width: 34px;  
+      height: 34px;  
+      border: 0;  
+      border-radius: 50%;  
+      background: transparent;  
+      color: #aeb0b7;  
+      font-size: 1.25rem;  
+      cursor: pointer;  
+    }  
+  
+    .stream-popup-close:hover,  
+    .stream-popup-close:focus-visible {  
+      background: #303137;  
+      color: #fff;  
+      outline: none;  
+    }  
+  
+    .stream-popup-options {  
+      max-height: calc(100vh - 150px);  
+      overflow-y: auto;  
+    }  
+  
+    .stream-popup-option {  
+      width: 100%;  
+      min-height: 64px;  
+      display: flex;  
+      align-items: center;  
+      gap: 14px;  
+      padding: 14px 20px;  
+      border: 0;  
+      border-bottom: 1px solid #393a3f;  
+      background: transparent;  
+      color: #f1f1f3;  
+      text-align: left;  
+      font: inherit;  
+      cursor: pointer;  
+      transition: background .15s ease;  
+    }  
+  
+    .stream-popup-option:last-child {  
+      border-bottom: 0;  
+    }  
+  
+    .stream-popup-option:hover,  
+    .stream-popup-option:focus-visible {  
+      background: #2b2c31;  
+      outline: none;  
+    }  
+  
+    .stream-popup-radio {  
+      width: 22px;  
+      height: 22px;  
+      border: 2px solid #8e9098;  
+      border-radius: 50%;  
+      flex: 0 0 22px;  
+      display: grid;  
+      place-items: center;  
+    }  
+  
+    .stream-popup-option.selected .stream-popup-radio {  
+      border-color: var(--fx-accent);  
+    }  
+  
+    .stream-popup-option.selected .stream-popup-radio::after {  
+      content: "";  
+      width: 10px;  
+      height: 10px;  
+      border-radius: 50%;  
+      background: var(--fx-accent);  
+    }  
+  
+    @media (max-width: 600px) {  
+      .stream-popup-overlay {  
+        padding: 14px;  
+      }  
+  
+      .stream-popup {  
+        width: 100%;  
+        border-radius: 14px;  
+      }  
+  
+      .stream-popup-header {  
+        padding: 16px;  
+      }  
+  
+      .stream-popup-option {  
+        padding: 14px 16px;  
+      }  
+    }  
+  
+    @media (min-width: 1200px) {  
+      .stream-popup {  
+        width: 500px;  
+      }  
+    }  
+  
+    .btn-fx-accent {  
+      --bs-btn-color: #fff;  
+      --bs-btn-bg: #ff3b30;  
+      --bs-btn-border-color: #ff3b30;  
+      --bs-btn-hover-color: #fff;  
+      --bs-btn-hover-bg: #e0281b;  
+      --bs-btn-hover-border-color: #e0281b;  
+      --bs-btn-focus-shadow-rgb: 255, 59, 48;  
+      --bs-btn-active-color: #fff;  
+      --bs-btn-active-bg: #d32f2f;  
+      --bs-btn-active-border-color: #d32f2f;  
+      font-weight: 700;  
+    }  
+  
+    .btn-outline-fx-accent {  
+      --bs-btn-color: #ff3b30;  
+      --bs-btn-border-color: #ff3b30;  
+      --bs-btn-hover-color: #fff;  
+      --bs-btn-hover-bg: #ff3b30;  
+      --bs-btn-hover-border-color: #ff3b30;  
+      --bs-btn-focus-shadow-rgb: 255, 59, 48;  
+      --bs-btn-active-color: #fff;  
+      --bs-btn-active-bg: #e0281b;  
+      --bs-btn-active-border-color: #e0281b;  
+    }  
+  
+    .text-fx-accent {  
+      color: #ff3b30 !important;  
+    }  
+  
+    .alert-fx-danger {  
+      --bs-alert-color: #bae6fd;  
+      --bs-alert-bg: rgba(8, 47, 73, 0.55);  
+      --bs-alert-border-color: rgba(56, 189, 248, 0.5);  
+    }  
+  
+    .btn-back {  
+      background: #ff3b30 !important;  
+      border-color: #ff3b30 !important;  
+      color: #fff !important;  
+      font-weight: 700;  
+      box-shadow: none;  
+    }  
+  
+    .btn-back:hover {  
+      background: #e0281b !important;  
+      border-color: #e0281b !important;  
+      color: #fff !important;  
+    }  
+  
+    #futbolx-chat-mount {  
+      width: 100%;  
+    }  
+  
+    .main-content {  
+      padding-top: 70px;  
+    }  
+  </style>  </head>  <body>    <div id="socialOverlay">  
+    <div class="social-card">  
+      <h2>Join Our Community</h2>  <p>  
+    Join us on our socials for live updates, event requests,  
+    and to report any site issues. You'll get full access once you join!  
+  </p>  
+
+  <div class="social-btns">  
+    <a href="https://discord.gg/6Rm347EkV2"  
+       target="_blank"  
+       class="btn-social btn-discord social-join-btn">  
+      <i class="fab fa-discord"></i> Join Our Discord  
+    </a>  
+
+    <a href="https://t.me/+H-GY0RZpdHc3ZDdl"  
+       target="_blank"  
+       class="btn-social btn-telegram social-join-btn">  
+      <i class="fab fa-telegram"></i> Join Our Telegram  
+    </a>  
+  </div>  
+</div>
+
+  </div>    <nav class="top-bar fixed-top">  
+    <div class="container-fluid">  <button class="btn"  
+          type="button"  
+          id="sidebarToggler"  
+          data-bs-toggle="offcanvas"  
+          data-bs-target="#sidebarMenu"  
+          aria-controls="sidebarMenu">  
+    <i class="fas fa-bars"></i>  
+  </button>  
+
+  <a href="/" class="futbolx-brand" id="brandLogo">  
+    FUTB<i class="fas fa-futbol ball-o" id="logoBall"></i>L-X  
+  </a>  
+
+</div>
+
+  </nav>    <div class="offcanvas offcanvas-start"  
+       tabindex="-1"  
+       id="sidebarMenu"  
+       aria-labelledby="sidebarMenuLabel">  <div class="offcanvas-header">  
+  <h5 class="offcanvas-title"  
+      style="font-family: 'Kanit'; font-weight: 700;">  
+    NAVIGATION  
+  </h5>  
+
+  <button type="button"  
+          class="btn-close text-reset"  
+          data-bs-dismiss="offcanvas"  
+          aria-label="Close">  
+  </button>  
+</div>  
+
+<div class="offcanvas-body">  
+  <ul class="nav flex-column">  
+
+    <li class="nav-item">  
+      <a class="nav-link" href="/">  
+        <i class="fas fa-house me-3"></i>Home  
+      </a>  
+    </li>  
+
+    <li class="nav-item">  
+      <a class="nav-link"  
+         href="https://discord.gg/CmRcPbBB2k"  
+         target="_blank">  
+        <i class="fab fa-discord me-3"></i>Discord  
+      </a>  
+    </li>  
+
+    <li class="nav-item">  
+      <a class="nav-link" href="/vip">  
+        <i class="fas fa-crown me-3"  
+           style="color: var(--fx-gold);"></i>VIP  
+      </a>  
+    </li>  
+
+    <li class="nav-item">  
+      <a class="nav-link"  
+         href="/auth/login"  
+         id="loginLink">  
+        <i class="fas fa-user me-3"></i>Login  
+      </a>  
+    </li>  
+
+    <li class="nav-item mt-3">  
+      <button id="themeToggle"  
+              class="nav-link btn btn-link w-100 text-start"  
+              aria-label="Toggle theme">  
+        <i class="fas fa-moon me-3"></i>Toggle Theme  
+      </button>  
+    </li>  
+
+  </ul>  
+</div>
+
+  </div>    <div class="container-fluid main-content">  <div class="container-xl mt-4">  
+
+  <div class="row">  
+
+    <div class="col-12">  
+
+      <div class="tip-container">  
+
+        <div class="alert alert-info alert-dismissible fade show permanent-noti"  
+             id="joinAlert"  
+             role="alert">  
+
+          <strong>Join us</strong> on  
+
+          <a href="https://discord.gg/UzHzerb6XY"  
+             target="_blank"  
+             rel="noopener"  
+             class="alert-link text-decoration-underline">  
+            Discord  
+          </a>  
+
+          and  
+
+          <a href="https://t.me/+H-GY0RZpdHc3ZDdl"  
+             target="_blank"  
+             rel="noopener"  
+             class="alert-link text-decoration-underline">  
+            Telegram  
+          </a>  
+
+          <button type="button"  
+                  class="btn-close btn-close-white"  
+                  data-bs-dismiss="alert"  
+                  aria-label="Close">  
+          </button>  
+
+        </div>  
+
+        <div class="alert alert-info alert-dismissible fade show permanent-noti"  
+             id="infoAlert"  
+             role="alert">  
+
+          <strong>Info:</strong>  
+          If stream is not loading on your end, try using a VPN to bypass your ISP restrictions.  
+
+          <button type="button"  
+                  class="btn-close btn-close-white"  
+                  data-bs-dismiss="alert"  
+                  aria-label="Close">  
+          </button>  
+
+        </div>  
+
+      </div>  
+
+      <div class="d-flex align-items-center mb-3">  
+
+        <a href="/" class="btn btn-back">  
+          <i class="fas fa-arrow-left"></i> Back to Home  
+        </a>  
+
+        <button id="startLivestream"  
+                class="btn btn-fx-accent ms-3"  
+                style="display:none;">  
+          Click to Start Livestream  
+        </button>  
+
+      </div>  
+
+      <div id="liveStreamTitle" class="live-title d-none">  
+        <h3 id="currentStreamName"></h3>  
+      </div>  
+
+      <div id="statusArea">  
+
+        <h2 id="eventTitle" class="mb-3"></h2>  
+
+        <div id="countdownDisplay"  
+             class="countdown-display">  
+        </div>  
+
+        <p id="statusMessage"  
+           class="status-message">  
+          This event has not started yet.  
+        </p>  
+
+      </div>  
+
+      <div class="row g-4 mt-2">  
+
+        <div class="col-12 col-lg-8">  
+
+          <div class="video-container"  
+               id="mainVideoContainer">  
+
+            <iframe id="embedPlayer"  
+                    src="about:blank"  
+                    frameborder="0"  
+                    allowfullscreen  
+                    allow="autoplay; fullscreen; picture-in-picture"  
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;">  
+            </iframe>  
+
+            <div id="oplayer-container"></div>  
+
+          </div>  
+
+          <div id="streamLinksContainer"  
+               class="stream-dropdown-container mt-3"  
+               style="display:none;">  
+
+            <label for="streamSelect"  
+                   class="form-label small text-muted font-weight-bold mb-1">  
+              <i class="fas fa-tv"></i> SELECT STREAM SOURCE  
+            </label>  
+
+            <button type="button"  
+                    id="streamSelect"  
+                    class="stream-select-custom"  
+                    aria-haspopup="dialog"  
+                    aria-expanded="false">  
+
+              <span id="streamSelectLabel"  
+                    class="stream-select-value">  
+                Select stream source  
+              </span>  
+
+              <i class="fas fa-chevron-down stream-select-arrow"  
+                 aria-hidden="true">  
+              </i>  
+
+            </button>  
+
+          </div>  
+
+          <div id="streamPopupOverlay"  
+               class="stream-popup-overlay"  
+               aria-hidden="true">  
+
+            <div class="stream-popup"  
+                 role="dialog"  
+                 aria-modal="true"  
+                 aria-labelledby="streamPopupTitle">  
+
+              <div class="stream-popup-header">  
+
+                <span id="streamPopupTitle">  
+                  Select Stream Source  
+                </span>  
+
+                <button type="button"  
+                        id="streamPopupClose"  
+                        class="stream-popup-close"  
+                        aria-label="Close">  
+
+                  <i class="fas fa-times"></i>  
+
+                </button>  
+
+              </div>  
+
+              <div id="streamPopupOptions"  
+                   class="stream-popup-options">  
+              </div>  
+
+            </div>  
+
+          </div>  
+
+        </div>  
+
+        <div class="col-12 col-lg-4">  
+          <div id="futbolx-chat-mount"></div>  
+        </div>  
+
+      </div>  
+
+      <div id="errorContainer"  
+           class="alert alert-fx-danger error-alert mt-3 d-none">  
+      </div>  
+
+    </div>  
+
+  </div>  
+
+</div>
+
+  </div>    <footer class="container-fluid d-flex flex-column flex-lg-row justify-content-lg-between align-items-center py-2 border-top mt-5">  <p class="mb-2 mb-lg-0 text-body-secondary text-center text-lg-start">  
+  FutbolX 2026  
+</p>  
+
+<ul class="nav justify-content-center justify-content-lg-end mb-0">  
+
+  <li class="nav-item">  
+    <a href="/vip"  
+       class="nav-link px-2 text-body-secondary">  
+      Donate / VIP Access  
+    </a>  
+  </li>  
+
+</ul>
+
+  </footer>    <div class="disclaimer">  
+    We DO NOT host nor transmit any audiovisual content itself...  
+  </div>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>    <script src="/assets/js/api.js"></script>    <script src="/assets/js/auth.js"></script>    <script type="module" src="/chat/loader.js"></script>    <script>  
+    document.addEventListener('DOMContentLoaded', () => {  
+  
+      const brandLogo = document.getElementById('brandLogo');  
+      const logoBall = document.getElementById('logoBall');  
+  
+      if (brandLogo && logoBall) {  
+  
+        brandLogo.addEventListener('click', () => {  
+  
+          logoBall.classList.add('spinning');  
+  
+          setTimeout(() => {  
+            logoBall.classList.remove('spinning');  
+          }, 600);  
+  
+        });  
+  
+      }  
+  
+    });  
+  </script>    <script>  
+  
+    const OVERLAY_KEY = 'futbolx_social_join';  
+    const overlay = document.getElementById('socialOverlay');  
+  
+    function checkOverlay() {  
+  
+      const lastJoin = localStorage.getItem(OVERLAY_KEY);  
+      const now = Date.now();  
+  
+      if (!lastJoin || (now - lastJoin > 86400000)) {  
+        overlay.style.display = 'flex';  
+      }  
+  
+    }  
+  
+    document.querySelectorAll('.social-join-btn').forEach(btn => {  
+  
+      btn.addEventListener('click', () => {  
+  
+        localStorage.setItem(OVERLAY_KEY, Date.now());  
+        overlay.style.display = 'none';  
+  
+      });  
+  
+    });  
+  
+    checkOverlay();  
+  
+    let playerInstance = null;  
+    let eventStartTime = null;  
+    let eventEndTime = null;  
+    let streamStarted = false;  
+    let foundEvent = null;  
+  
+    const PRE_LIVE_BUFFER = 900;  
+  
+    let realActivePresenceCount = 0;  
+    let calculatedViewerSimulationState = 0;  
+    let liveWindowActive = false;  
+  
+    const htmlEl = document.documentElement;  
+    const themeToggle = document.getElementById('themeToggle');  
+  
+    const savedTheme = localStorage.getItem('theme') || 'dark';  
+  
+    htmlEl.setAttribute('data-bs-theme', savedTheme);  
+  
+    if (themeToggle) {  
+  
+      themeToggle.innerHTML =  
+        savedTheme === 'dark'  
+          ? '<i class="fas fa-moon me-3"></i>Toggle Theme'  
+          : '<i class="fas fa-sun me-3"></i>Toggle Theme';  
+  
+      themeToggle.addEventListener('click', () => {  
+  
+        const current =  
+          htmlEl.getAttribute('data-bs-theme');  
+  
+        const next =  
+          current === 'dark' ? 'light' : 'dark';  
+  
+        htmlEl.setAttribute('data-bs-theme', next);  
+  
+        localStorage.setItem('theme', next);  
+  
+        themeToggle.innerHTML =  
+          next === 'dark'  
+            ? '<i class="fas fa-moon me-3"></i>Toggle Theme'  
+            : '<i class="fas fa-sun me-3"></i>Toggle Theme';  
+  
+      });  
+  
+    }  
+  
+    async function fetchWithRetry(url, maxRetries = 3, delay = 1000) {  
+  
+      return new Promise((resolve, reject) => {  
+  
+        let attempts = 0;  
+  
+        function attempt() {  
+  
+          attempts++;  
+  
+          fetch(url, {  
+            signal: AbortSignal.timeout(5000)  
+          })  
+  
+          .then(res => {  
+  
+            if (!res.ok) {  
+              throw new Error(`HTTP ${res.status}`);  
+            }  
+  
+            return res.json();  
+  
+          })  
+  
+          .then(data => resolve(data))  
+  
+          .catch(err => {  
+  
+            if (attempts < maxRetries) {  
+              setTimeout(attempt, delay);  
+            } else {  
+              reject(err);  
+            }  
+  
+          });  
+  
+        }  
+  
+        attempt();  
+  
+      });  
+  
+    }  
+  
+    async function isM3U8(url) {  
+  
+      if (url.toLowerCase().includes('.m3u8')) {  
+        return true;  
+      }  
+  
+      try {  
+  
+        const r = await fetch(url, {  
+          method: 'HEAD'  
+        });  
+  
+        return (  
+          r.headers.get('content-type') || ''  
+        ).includes('mpegurl');  
+  
+      } catch {  
+  
+        return false;  
+  
+      }  
+  
+    }  
+  
+    async function playStream(url) {  
+  
+      if (playerInstance) {  
+  
+        playerInstance.remove();  
+        playerInstance = null;  
+  
+      }  
+  
+      const useJW = await isM3U8(url);  
+  
+      initActualPlayer(url, useJW);  
+  
+    }  
+  
+    function initActualPlayer(url, useJW) {  
+  
+      if (useJW) {  
+  
+        document.getElementById('embedPlayer').style.display = 'none';  
+  
+        const container =  
+          document.getElementById('oplayer-container');  
+  
+        container.style.display = 'block';  
+  
+        container.innerHTML =  
+          '<div id="jw-player"></div>';  
+  
+        playerInstance =  
+          jwplayer("jw-player").setup({  
+  
+            file: url,  
+            autostart: false,  
+            mute: true,  
+            width: "100%",  
+            aspectratio: "16:9",  
+            cast: {}  
+  
+          });  
+  
+        playerInstance.on('ready', () => {  
+  
+          const triggerAd = () => {  
+  
+            const host =  
+              window.location.hostname.toLowerCase();  
+  
+            /*  
+             * =====================================================  
+             * FUTBOL-X.TOP ONLY  
+             * =====================================================  
+             */  
+  
+            if (  
+              host === 'futbol-x.top' ||  
+              host === 'www.futbol-x.top'  
+            ) {  
+  
+              const popunderScript =  
+                document.createElement('script');  
+  
+              popunderScript.src =  
+                "https://pl29465843.effectivecpmnetwork.com/ed/a2/e5/eda2e566755b4b6a812d6d5af6d26193.js";  
+  
+              document.body.appendChild(popunderScript);  
+  
+              window.open(  
+                "https://omg10.com/4/11347966",  
+                "_blank"  
+              );  
+  
+            }  
+  
+            /*  
+             * =====================================================  
+             * FUTBOL-X.XYZ ONLY  
+             * =====================================================  
+             */  
+  
+            else if (  
+              host === 'futbol-x.xyz' ||  
+              host === 'www.futbol-x.xyz'  
+            ) {  
+  
+              const xyzAd =  
+                document.createElement('script');  
+  
+              xyzAd.src =  
+                "https://pl30323849.profitableratecpmnetwork.com/d0/10/64/d0106475f853258aa2f6b743cb58e857.js";  
+  
+              document.body.appendChild(xyzAd);  
+  
+              /*  
+               * New XYZ onclick ad.  
+               * Triggered by the user's first click on the player.  
+               */  
+  
+              window.open(  
+                "https://omg10.com/4/11786340",  
+                "_blank"  
+              );  
+  
+            }  
+  
+            /*  
+             * =====================================================  
+             * FUTBOL-X.SRYZE.CC ONLY  
+             * =====================================================  
+             */  
+  
+            else if (  
+              host === 'futbol-x.sryze.cc'  
+            ) {  
+  
+              const sryzeAd =  
+                document.createElement('script');  
+  
+              sryzeAd.src =  
+                "https://pl31234277.profitableratecpmnetwork.com/26/f5/c1/26f5c129f60af79adf85224f1074b93d.js";  
+  
+              document.body.appendChild(sryzeAd);  
+  
+            }  
+  
+            /*  
+             * Remove listener after first trigger.  
+             * This keeps the ad from firing repeatedly  
+             * from additional player clicks.  
+             */  
+  
+            container.removeEventListener(  
+              'click',  
+              triggerAd  
+            );  
+  
+          };  
+  
+          container.addEventListener(  
+            'click',  
+            triggerAd  
+          );  
+  
+        });  
+  
+      } else {  
+  
+        document.getElementById(  
+          'oplayer-container'  
+        ).style.display = 'none';  
+  
+        const iframe =  
+          document.getElementById('embedPlayer');  
+  
+        iframe.style.display = 'block';  
+  
+        try {  
+  
+          const u = new URL(url);  
+  
+          u.searchParams.set(  
+            'autoplay',  
+            '0'  
+          );  
+  
+          iframe.src = u.toString();  
+  
+        } catch {  
+  
+          iframe.src = url;  
+  
+        }  
+  
+      }  
+  
+    }  
+  
+    function populateStreamDropdown(event) {  
+  
+      const picker =  
+        document.getElementById('streamSelect');  
+  
+      const label =  
+        document.getElementById('streamSelectLabel');  
+  
+      const overlay =  
+        document.getElementById('streamPopupOverlay');  
+  
+      const optionsContainer =  
+        document.getElementById('streamPopupOptions');  
+  
+      const closeButton =  
+        document.getElementById('streamPopupClose');  
+  
+      if (  
+        !picker ||  
+        !label ||  
+        !overlay ||  
+        !optionsContainer  
+      ) {  
+        return;  
+      }  
+  
+      const streams =  
+        Array.isArray(event.streams)  
+          ? event.streams  
+          : [];  
+  
+      optionsContainer.innerHTML =  
+        streams.map((s, i) => {  
+  
+          const realUrl =  
+            typeof s === 'string'  
+              ? s  
+              : s.url;  
+  
+          const title =  
+            typeof s === 'string'  
+              ? `Stream ${i + 1}`  
+              : (s.title || `Stream ${i + 1}`);  
+  
+          const payload =  
+            btoa(  
+              btoa(realUrl) +  
+              '||' +  
+              Math.random()  
+                .toString(36)  
+                .slice(2, 10)  
+            );  
+  
+          return `  
+            <button type="button"  
+                    class="stream-popup-option${i === 0 ? ' selected' : ''}"  
+                    data-value="${payload}"  
+                    data-title="${String(title).replace(/"/g, '&quot;')}">  
+  
+              <span class="stream-popup-radio"  
+                    aria-hidden="true">  
+              </span>  
+  
+              <span>${title}</span>  
+  
+            </button>  
+          `;  
+  
+        }).join('');  
+  
+      const openPopup = () => {  
+  
+        overlay.classList.add('is-open');  
+  
+        overlay.setAttribute(  
+          'aria-hidden',  
+          'false'  
+        );  
+  
+        picker.classList.add('is-open');  
+  
+        picker.setAttribute(  
+          'aria-expanded',  
+          'true'  
+        );  
+  
+        document.body.style.overflow = 'hidden';  
+  
+        const firstOption =  
+          optionsContainer.querySelector(  
+            '.stream-popup-option'  
+          );  
+  
+        if (firstOption) {  
+          firstOption.focus();  
+        }  
+  
+      };  
+  
+      const closePopup = () => {  
+  
+        overlay.classList.remove('is-open');  
+  
+        overlay.setAttribute(  
+          'aria-hidden',  
+          'true'  
+        );  
+  
+        picker.classList.remove('is-open');  
+  
+        picker.setAttribute(  
+          'aria-expanded',  
+          'false'  
+        );  
+  
+        document.body.style.overflow = '';  
+  
+        picker.focus();  
+  
+      };  
+  
+      picker.onclick = openPopup;  
+  
+      picker.onkeydown = (e) => {  
+  
+        if (  
+          e.key === 'Enter' ||  
+          e.key === ' '  
+        ) {  
+  
+          e.preventDefault();  
+  
+          openPopup();  
+  
+        }  
+  
+      };  
+  
+      closeButton.onclick = closePopup;  
+  
+      overlay.onclick = (e) => {  
+  
+        if (e.target === overlay) {  
+          closePopup();  
+        }  
+  
+      };  
+  
+      optionsContainer  
+        .querySelectorAll(  
+          '.stream-popup-option'  
+        )  
+        .forEach(option => {  
+  
+          option.onclick = () => {  
+  
+            const realUrl =  
+              atob(  
+                atob(option.dataset.value)  
+                  .split('||')[0]  
+              );  
+  
+            const title =  
+              option.dataset.title || 'Stream';  
+  
+            playStream(realUrl);  
+  
+            label.textContent = title;  
+  
+            document.getElementById(  
+              'currentStreamName'  
+            ).innerHTML = title;  
+  
+            optionsContainer  
+              .querySelectorAll(  
+                '.stream-popup-option'  
+              )  
+              .forEach(item =>  
+                item.classList.remove(  
+                  'selected'  
+                )  
+              );  
+  
+            option.classList.add('selected');  
+  
+            closePopup();  
+  
+          };  
+  
+        });  
+  
+      if (streams.length) {  
+  
+        const first = streams[0];  
+  
+        label.textContent =  
+          typeof first === 'string'  
+            ? 'Stream 1'  
+            : (first.title || 'Main Feed');  
+  
+      }  
+  
+      if (!window.__futbolxStreamEscapeHandler) {  
+  
+        window.__futbolxStreamEscapeHandler = true;  
+  
+        document.addEventListener(  
+          'keydown',  
+          (e) => {  
+  
+            if (e.key === 'Escape') {  
+  
+              const currentOverlay =  
+                document.getElementById(  
+                  'streamPopupOverlay'  
+                );  
+  
+              if (  
+                currentOverlay &&  
+                currentOverlay.classList.contains(  
+                  'is-open'  
+                )  
+              ) {  
+  
+                currentOverlay.classList.remove(  
+                  'is-open'  
+                );  
+  
+                currentOverlay.setAttribute(  
+                  'aria-hidden',  
+                  'true'  
+                );  
+  
+                const currentPicker =  
+                  document.getElementById(  
+                    'streamSelect'  
+                  );  
+  
+                if (currentPicker) {  
+  
+                  currentPicker.classList.remove(  
+                    'is-open'  
+                  );  
+  
+                  currentPicker.setAttribute(  
+                    'aria-expanded',  
+                    'false'  
+                  );  
+  
+                  currentPicker.focus();  
+  
+                }  
+  
+                document.body.style.overflow = '';  
+  
+              }  
+  
+            }  
+  
+          }  
+        );  
+  
+      }  
+  
+    }  
+  
+    window.initViewerPresenceEngine = () => {  
+  
+      const uriName =  
+        window.location.pathname  
+          .split('/')  
+          .pop() || 'lobby';  
+  
+      const channel =  
+        window.globalSupabaseInstance.channel(  
+          `viewers_${uriName}`  
+        );  
+  
+      channel.on(  
+        'presence',  
+        { event: 'sync' },  
+        () => {  
+  
+          const presenceState =  
+            channel.presenceState();  
+  
+          realActivePresenceCount =  
+            Object.keys(  
+              presenceState  
+            ).length;  
+  
+          window.renderConsolidatedViewers();  
+  
+        }  
+      );  
+  
+      channel.subscribe(  
+        async (status) => {  
+  
+          if (status === 'SUBSCRIBED') {  
+  
+            await channel.track({  
+              online_at:  
+                new Date().toISOString()  
+            });  
+  
+          }  
+  
+        }  
+      );  
+  
+      function executeOrganicUpdateStep() {  
+  
+        if (  
+          !foundEvent ||  
+          !foundEvent.max_simulated_viewers  
+        ) {  
+  
+          calculatedViewerSimulationState = 0;  
+  
+          window.renderConsolidatedViewers();  
+  
+          setTimeout(  
+            executeOrganicUpdateStep,  
+            3000  
+          );  
+  
+          return;  
+  
+        }  
+  
+        const maximumLimit =  
+          parseInt(  
+            foundEvent.max_simulated_viewers,  
+            10  
+          );  
+  
+        if (  
+          isNaN(maximumLimit) ||  
+          maximumLimit <= 0  
+        ) {  
+  
+          calculatedViewerSimulationState = 0;  
+  
+          window.renderConsolidatedViewers();  
+  
+          setTimeout(  
+            executeOrganicUpdateStep,  
+            3000  
+          );  
+  
+          return;  
+  
+        }  
+  
+        const operationalCapBase =  
+          maximumLimit - 20;  
+  
+        if (  
+          calculatedViewerSimulationState === 0  
+        ) {  
+  
+          calculatedViewerSimulationState =  
+            Math.floor(  
+              operationalCapBase * 0.94  
+            );  
+  
+        }  
+  
+        const behaviorRoll =  
+          Math.random();  
+  
+        if (behaviorRoll < 0.45) {  
+  
+        } else {  
+  
+          const timestamp =  
+            Date.now() / 60000;  
+  
+          const macroeconomicTrend =  
+            Math.sin(timestamp) * 0.15;  
+  
+          let microShiftDelta =  
+            Math.floor(  
+              Math.random() * 7  
+            ) - 3;  
+  
+          if (  
+            calculatedViewerSimulationState >  
+            (operationalCapBase + 5)  
+          ) {  
+  
+            microShiftDelta -= 2;  
+  
+          } else if (  
+            calculatedViewerSimulationState <  
+            (operationalCapBase * 0.88)  
+          ) {  
+  
+            microShiftDelta += 2;  
+  
+          } else if (  
+            macroeconomicTrend > 0.05  
+          ) {  
+  
+            microShiftDelta += 1;  
+  
+          } else if (  
+            macroeconomicTrend < -0.05  
+          ) {  
+  
+            microShiftDelta -= 1;  
+  
+          }  
+  
+          calculatedViewerSimulationState +=  
+            microShiftDelta;  
+  
+          if (  
+            calculatedViewerSimulationState >  
+            operationalCapBase  
+          ) {  
+  
+            calculatedViewerSimulationState =  
+              operationalCapBase -  
+              Math.floor(  
+                Math.random() * 5  
+              );  
+  
+          }  
+  
+        }  
+  
+        window.renderConsolidatedViewers();  
+  
+        const nextIntervalDelay =  
+          Math.floor(  
+            Math.random() * 6000  
+          ) + 3500;  
+  
+        setTimeout(  
+          executeOrganicUpdateStep,  
+          nextIntervalDelay  
+        );  
+  
+      }  
+  
+      setTimeout(  
+        executeOrganicUpdateStep,  
+        2000  
+      );  
+  
+    };  
+  
+    window.renderConsolidatedViewers = () => {  
+  
+      const element =  
+        document.getElementById(  
+          'onlineCount'  
+        );  
+  
+      const wrapper =  
+        document.getElementById(  
+          'viewerCountWrapper'  
+        );  
+  
+      if (!element || !wrapper) {  
+        return;  
+      }  
+  
+      const nowEpoch =  
+        Math.floor(  
+          Date.now() / 1000  
+        );  
+  
+      if (  
+        eventStartTime &&  
+        nowEpoch >= eventStartTime  
+      ) {  
+  
+        wrapper.classList.remove(  
+          'd-none'  
+        );  
+  
+      } else {  
+  
+        wrapper.classList.add(  
+          'd-none'  
+        );  
+  
+      }  
+  
+      const totalCombinedViews =  
+        realActivePresenceCount +  
+        calculatedViewerSimulationState;  
+  
+      element.innerText =  
+        totalCombinedViews;  
+  
+    };  
+  
+    document.addEventListener(  
+      'DOMContentLoaded',  
+      async () => {  
+  
+        const uriName =  
+          window.location.pathname  
+            .split('/')  
+            .pop();  
+  
+        const startBtn =  
+          document.getElementById(  
+            'startLivestream'  
+          );  
+  
+        try {  
+  
+          const catListRes =  
+            await fetchWithRetry(  
+              '/api/stream'  
+            );  
+  
+          const fetchPromises =  
+            catListRes.categories.map(  
+              cat =>  
+                fetchWithRetry(  
+                  `/api/${cat}.json`  
+                )  
+                .catch(() => ({  
+                  success: true,  
+                  streams: []  
+                }))  
+            );  
+  
+          const allCategoryData =  
+            await Promise.all(  
+              fetchPromises  
+            );  
+  
+          for (  
+            const data of allCategoryData  
+          ) {  
+  
+            for (  
+              const catObj of data.streams  
+            ) {  
+  
+              foundEvent =  
+                catObj.streams.find(  
+                  ev =>  
+                    ev.uri_name === uriName  
+                );  
+  
+              if (foundEvent) {  
+                break;  
+              }  
+  
+            }  
+  
+            if (foundEvent) {  
+              break;  
+            }  
+  
+          }  
+  
+          if (foundEvent) {  
+  
+            document.getElementById(  
+              'eventTitle'  
+            ).textContent =  
+              foundEvent.name;  
+  
+            document.getElementById(  
+              'chatEventTitle'  
+            ).textContent =  
+              foundEvent.name + " Chat";  
+  
+            eventStartTime =  
+              new Date(  
+                foundEvent.starts_at +  
+                '+03:00'  
+              ).getTime() / 1000;  
+  
+            eventEndTime =  
+              foundEvent.ends_at  
+                ? new Date(  
+                    foundEvent.ends_at +  
+                    '+03:00'  
+                  ).getTime() / 1000  
+                : eventStartTime + 10800;  
+  
+            setInterval(() => {  
+  
+              const now =  
+                Math.floor(  
+                  Date.now() / 1000  
+                );  
+  
+              if (  
+                now >=  
+                  (eventStartTime -  
+                    PRE_LIVE_BUFFER) &&  
+                now <= eventEndTime  
+              ) {  
+  
+                liveWindowActive = true;  
+  
+                document.getElementById(  
+                  'statusArea'  
+                ).style.display = 'none';  
+  
+                if (!streamStarted) {  
+  
+                  startBtn.style.display =  
+                    'inline-block';  
+  
+                }  
+  
+              } else if (  
+                now < eventStartTime  
+              ) {  
+  
+                liveWindowActive = false;  
+  
+                const diff =  
+                  eventStartTime - now;  
+  
+                const h =  
+                  Math.floor(  
+                    diff / 3600  
+                  );  
+  
+                const m =  
+                  Math.floor(  
+                    (diff % 3600) / 60  
+                  );  
+  
+                const s =  
+                  diff % 60;  
+  
+                if (h >= 24) {  
+  
+                  const days =  
+                    Math.floor(h / 24);  
+  
+                  const remHours =  
+                    h % 24;  
+  
+                  document.getElementById(  
+                    'countdownDisplay'  
+                  ).textContent =  
+                    `${days}day ${remHours}hr ${m}m ${s}s`;  
+  
+                } else {  
+  
+                  document.getElementById(  
+                    'countdownDisplay'  
+                  ).textContent =  
+                    `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;  
+  
+                }  
+  
+              }  
+  
+            }, 1000);  
+  
+          }  
+  
+          startBtn.onclick = () => {  
+  
+            document.getElementById(  
+              'mainVideoContainer'  
+            ).style.display =  
+              'block';  
+  
+            document.getElementById(  
+              'streamLinksContainer'  
+            ).style.display =  
+              'block';  
+  
+            startBtn.style.display =  
+              'none';  
+  
+            document.getElementById(  
+              'liveStreamTitle'  
+            ).classList.remove(  
+              'd-none'  
+            );  
+  
+            const dynamicInitialFeed =  
+              foundEvent.streams[0];  
+  
+            const initialUrl =  
+              typeof dynamicInitialFeed === 'string'  
+                ? dynamicInitialFeed  
+                : dynamicInitialFeed.url;  
+  
+            document.getElementById(  
+              'currentStreamName'  
+            ).innerHTML =  
+              `${dynamicInitialFeed.title || 'Main Feed'}`;  
+  
+            playStream(initialUrl);  
+  
+            populateStreamDropdown(  
+              foundEvent  
+            );  
+  
+            streamStarted = true;  
+  
+          };  
+  
+        } catch (err) {}  
+  
+      }  
+    );  
+  
+  </script>  </body>  
   </html>
