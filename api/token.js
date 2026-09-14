@@ -18,8 +18,8 @@ module.exports = async (req, res) => {
 
   // CHANGE THESE TO YOUR TWO REAL FLUSSONIC DOMAINS
   const FLUSSONIC_SERVERS = {
-    1: 'https://random.com',
-    2: 'https://random2.com'
+    1: 'https://off.futtv.nx.kg',
+    2: 'https://type.futtv.nx.kg'
   };
 
   const selectedServer = String(server || '1');
