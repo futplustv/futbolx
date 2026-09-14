@@ -17,7 +17,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/int/index.m3u8"
             }
           ]
         },
@@ -33,7 +33,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/new/index.m3u8"
             }
           ]
         },
@@ -49,7 +49,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/bet/index.m3u8"
             }
           ]
         }
