@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
   const now = Math.floor(Date.now() / 1000);
 
   const start = now - 300;
-  const end = now + 60;
+  const end = now + 10800;
 
   const salt = crypto.randomBytes(8).toString('hex');
 
