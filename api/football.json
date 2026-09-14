@@ -6,240 +6,12 @@
       "always_live": 0,
       "streams": [
         {
-          "name": "Rangers vs Celtic",
-          "uri_name": "r4v1c8",
-          "poster": "https://i.ibb.co/9SYc07N/Chat-GPT-Image-Sep-13-2026-08-00-19-AM.png",
-          "tag": "Scottish League Cup",
-          "starts_at": "2026-09-13T14:00:00",
-          "ends_at": "2026-09-13T16:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/celt/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Sheffield vs Wolves",
-          "uri_name": "s4v1w8",
-          "poster": "https://i.ibb.co/3mvqWHy9/file-000000000e2c8211bcabf2d6f83ae89d.png",
-          "tag": "Efl Championship",
-          "starts_at": "2026-09-13T14:00:00",
-          "ends_at": "2026-09-13T16:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/wolv/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Celta Vigo vs Malaga",
-          "uri_name": "c4v1m8",
-          "poster": "https://i.ibb.co/cK7MjTbj/file-00000000d2a48208afde877004eb06ca.png",
-          "tag": "Laliga",
-          "starts_at": "2026-09-13T15:00:00",
-          "ends_at": "2026-09-13T17:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/celta/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Coventry City vs Brighton",
-          "uri_name": "c4v1b8",
-          "poster": "https://i.ibb.co/LDCS9xbs/file-000000005d5c82078304c26ebfc4acd0.png",
-          "tag": "Epl",
-          "starts_at": "2026-09-13T16:00:00",
-          "ends_at": "2026-09-13T18:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/cov/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Lecce vs Monza",
-          "uri_name": "l4v1m8",
-          "poster": "https://i.ibb.co/FbsRJ6vG/file-000000000aa88211864ca292d090bd7e.png",
+          "name": "Inter Milan vs Udinese",
+          "uri_name": "i4v1u8",
+          "poster": "https://i.ibb.co/jk5nZ8r1/image-6191ee56.jpg",
           "tag": "Seria A",
-          "starts_at": "2026-09-13T16:00:00",
-          "ends_at": "2026-09-13T18:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/lecc-mon/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Lille vs Troyes",
-          "uri_name": "l4v1t8",
-          "poster": "https://i.ibb.co/WNGVVyZQ/file-00000000b928821192cd3542e0af948e.png",
-          "tag": "Ligue 1",
-          "starts_at": "2026-09-13T16:00:00",
-          "ends_at": "2026-09-13T18:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/lill/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Rb Leipzig vs Hamburg",
-          "uri_name": "r4v1h8",
-          "poster": "https://i.ibb.co/zVg3sM5X/file-0000000035848211ab3d508365c5494e.png",
-          "tag": "Bundesliga",
-          "starts_at": "2026-09-13T16:30:00",
-          "ends_at": "2026-09-13T18:30:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/ham/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Levante vs Barcelona",
-          "uri_name": "l4v1b8",
-          "poster": "https://i.ibb.co/JWnJVxMR/file-000000006bfc821196afa3daf8eec2f5.png",
-          "tag": "Laliga",
-          "starts_at": "2026-09-13T17:15:00",
-          "ends_at": "2026-09-13T19:30:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed En",
-              "url": "https://off.futtv.nx.kg/test1/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 1 Esp",
-              "url": "https://type.futtv.nx.kg/test2/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Le Mans vs Lens",
-          "uri_name": "l4v1l8",
-          "poster": "https://i.ibb.co/MyZbbncV/file-0000000017c48211bbbf36d34a8f97dc.png",
-          "tag": "Ligue 1",
-          "starts_at": "2026-09-13T18:15:00",
-          "ends_at": "2026-09-13T20:17:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/leman/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Manchester United vs Manchester City",
-          "uri_name": "m4v1m8",
-          "poster": "https://i.ibb.co/cXMZfQzW/file-00000000e25c8211b588c33197eaee42.png",
-          "tag": "Epl",
-          "starts_at": "2026-09-13T18:30:00",
-          "ends_at": "2026-09-13T20:40:00",
-          "always_live": 0,
-          "max_simulated_viewers": 1200,
-          "streams": [
-            {
-              "title": "Main Feed En",
-              "url": "https://on.futtv.nx.kg/mun-en/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 1 En",
-              "url": "https://on.futtv.nx.kg/mci-en/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 2 Fr",
-              "url": "https://on.futtv.nx.kg/mun-fr/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 3 Ar",
-              "url": "https://off.futtv.nx.kg/mun-ar/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 4 Alb",
-              "url": "https://off.futtv.nx.kg/mun-alb/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Elversberg vs Bayern Münich",
-          "uri_name": "e4v1b8",
-          "poster": "https://i.ibb.co/q3qrNXh3/file-000000009edc8211ba88c7e27941f174.png",
-          "tag": "Bundesliga",
-          "starts_at": "2026-09-13T18:30:00",
-          "ends_at": "2026-09-13T20:40:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/bay/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Napoli vs Bologna",
-          "uri_name": "n4v1b8",
-          "poster": "https://i.ibb.co/0yPQ5kWh/file-00000000e13882119bf889ebfce6e289.png",
-          "tag": "Seria A",
-          "starts_at": "2026-09-13T19:00:00",
-          "ends_at": "2026-09-13T21:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/napo/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Getafe vs La Coruna",
-          "uri_name": "g4v1l8",
-          "poster": "https://i.ibb.co/LDNbW1gn/file-000000008b108211a410cedc2ca4a51f.png",
-          "tag": "Laliga",
-          "starts_at": "2026-09-13T19:30:00",
-          "ends_at": "2026-09-13T21:35:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/get/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Galatasaray vs Kocaelispor",
-          "uri_name": "g4v1k8",
-          "poster": "https://i.ibb.co/4bCgtCC/file-0000000092d082119986404f2c1d8018.png",
-          "tag": "Super Lig",
-          "starts_at": "2026-09-12T20:00:00",
-          "ends_at": "2026-09-12T22:00:00",
+          "starts_at": "2026-09-14T21:45:00",
+          "ends_at": "2026-09-14T23:45:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
@@ -250,82 +22,34 @@
           ]
         },
         {
-          "name": "SL Benfica vs Gil Vicente",
-          "uri_name": "s4v1g8",
-          "poster": "https://i.ibb.co/gFBCTd4r/file-0000000080f882118c69dc286287a43a.png",
-          "tag": "Liga Portugal",
-          "starts_at": "2026-09-13T20:00:00",
-          "ends_at": "2026-09-13T22:00:00",
+          "name": "Leeds vs Newcastle",
+          "uri_name": "l4v1n8",
+          "poster": "https://i.ibb.co/PfRx06c/image-e2efc3f.jpg",
+          "tag": "Epl",
+          "starts_at": "2026-09-14T22:00:00",
+          "ends_at": "2026-09-15T00:00:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/ben/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Sassuolo vs Juventus",
-          "uri_name": "s4v1j8",
-          "poster": "https://i.ibb.co/SbQ4sYp/file-00000000905c821187cf3692c66b883c.png",
-          "tag": "Seria A",
-          "starts_at": "2026-09-13T21:45:00",
-          "ends_at": "2026-09-13T23:50:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/juv/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Brestois vs Psg",
-          "uri_name": "b4v1p8",
-          "poster": "https://i.ibb.co/v4xXKbrV/file-00000000a3608211944fae729788e090.png",
-          "tag": "Ligue 1",
-          "starts_at": "2026-09-13T21:45:00",
-          "ends_at": "2026-09-13T23:50:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/psg/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Real Sociedad vs Atlètico Madrid",
-          "uri_name": "r4v1a8",
-          "poster": "https://i.ibb.co/M5pzL77p/file-00000000760c8208be3e00e16ee1fba0.png",
+          "name": "Villarreal vs Real Betis",
+          "uri_name": "v4v1r8",
+          "poster": "https://i.ibb.co/xqhJfFPv/image-5be4af67.jpg",
           "tag": "Laliga",
-          "starts_at": "2026-09-13T22:00:00",
-          "ends_at": "2026-09-14T00:00:00",
+          "starts_at": "2026-09-14T22:00:00",
+          "ends_at": "2026-09-15T00:00:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/atm/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "FC Famalicão vs Sporting CP",
-          "uri_name": "f4v1s8",
-          "poster": "https://i.ibb.co/VWJw8N1y/file-0000000010688211a6c90ba544d1c73f.png",
-          "tag": "Liga Portugal",
-          "starts_at": "2026-09-13T22:30:00",
-          "ends_at": "2026-09-14T00:35:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/spo/index.m3u8"
+              "url": ""
             }
           ]
         }
