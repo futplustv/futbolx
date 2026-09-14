@@ -587,7 +587,7 @@
       --bs-btn-focus-shadow-rgb: 255, 59, 48;
       --bs-btn-active-color: #fff;
       --bs-btn-active-bg: #e0281b;
-      --bs-btn-active-border-color: #e0281b;
+      --bs-btn-active-border-color: #d32f2f;
     }
 
     .text-fx-accent {
@@ -1118,6 +1118,30 @@
 
     }
 
+
+    /*
+     * =====================================================
+     * FLUSSONIC TOKEN CONFIG
+     * =====================================================
+     *
+     * CHANGE THESE TWO HOSTNAMES TO YOUR REAL
+     * FLUSSONIC SERVER DOMAINS.
+     *
+     * Server 1 = random.com
+     * Server 2 = random2.com
+     *
+     * Only matching Flussonic URLs will be tokenized.
+     * IFRAME / non-Flussonic streams remain untouched.
+     */
+
+    const FLUSSONIC_TOKEN_SERVERS = {
+
+      'random.com': '1',
+      'random2.com': '2'
+
+    };
+
+
     async function playStream(url) {
 
       if (playerInstance) {
@@ -1129,9 +1153,138 @@
 
       const useJW = await isM3U8(url);
 
-      initActualPlayer(url, useJW);
+
+      /*
+       * =====================================================
+       * FLUSSONIC TOKENIZATION
+       * =====================================================
+       *
+       * Only JW / M3U8 streams are processed here.
+       * IFRAME streams continue exactly as before.
+       */
+
+      if (useJW) {
+
+        try {
+
+          const streamUrl =
+            new URL(url);
+
+          const hostname =
+            streamUrl.hostname.toLowerCase();
+
+          const server =
+            FLUSSONIC_TOKEN_SERVERS[hostname];
+
+
+          /*
+           * If this M3U8 does not come from one of the
+           * configured Flussonic servers, leave it alone.
+           */
+
+          if (server) {
+
+            /*
+             * Example:
+             *
+             * https://random.com/channel1/index.m3u8
+             *
+             * becomes:
+             *
+             * channel1
+             */
+
+            let stream =
+              streamUrl.pathname
+                .replace(/^\/+/, '')
+                .replace(/\/index\.m3u8$/i, '');
+
+
+            if (!stream) {
+
+              throw new Error(
+                'Could not determine Flussonic stream name'
+              );
+
+            }
+
+
+            stream =
+              decodeURIComponent(stream);
+
+
+            /*
+             * Ask our Vercel API for a fresh token.
+             */
+
+            const tokenResponse =
+              await fetch(
+                `/api/token?stream=${encodeURIComponent(stream)}&server=${encodeURIComponent(server)}`,
+                {
+                  method: 'GET',
+                  cache: 'no-store',
+                  signal: AbortSignal.timeout(5000)
+                }
+              );
+
+
+            if (!tokenResponse.ok) {
+
+              throw new Error(
+                `Token request failed: HTTP ${tokenResponse.status}`
+              );
+
+            }
+
+
+            const tokenData =
+              await tokenResponse.json();
+
+
+            if (!tokenData.url) {
+
+              throw new Error(
+                'Token API returned no stream URL'
+              );
+
+            }
+
+
+            /*
+             * Replace the original Flussonic URL
+             * with the protected tokenized URL.
+             */
+
+            url =
+              tokenData.url;
+
+          }
+
+        } catch (err) {
+
+          console.error(
+            'Flussonic token error:',
+            err
+          );
+
+          return;
+
+        }
+
+      }
+
+
+      /*
+       * Existing player behavior stays unchanged.
+       */
+
+      initActualPlayer(
+        url,
+        useJW
+      );
 
     }
+
 
     function initActualPlayer(url, useJW) {
 
