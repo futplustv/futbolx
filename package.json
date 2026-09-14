@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "serve .",
+    "start:sevalla": "node sevalla-server.js",
     "build": "echo 'No build step required for static site'"
   },
   "author": "Futbol-x",
