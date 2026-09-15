@@ -65,7 +65,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/alaves/index.m3u8"
             }
           ]
         },
@@ -81,7 +81,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/ful-whu/index.m3u8"
             }
           ]
         },
@@ -141,7 +141,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/rea-bre/index.m3u8"
             }
           ]
         },
@@ -157,7 +157,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/fio/index.m3u8"
             }
           ]
         },
