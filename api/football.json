@@ -93,19 +93,19 @@
           "starts_at": "2026-09-15T22:00:00",
           "ends_at": "2026-09-16T00:05:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 400,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://type.futtv.nx.kg/liv-en/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 Ar",
+              "url": "https://type.futtv.nx.kg/liv-ar/index.m3u8"
             },
             {
-              "title": "Alt Feed 2",
-              "url": ""
+              "title": "Alt Feed 2 Fr",
+              "url": "https://type.futtv.nx.kg/liv-fr/index.m3u8"
             }
           ]
         },
@@ -117,15 +117,15 @@
           "starts_at": "2026-09-15T22:00:00",
           "ends_at": "2026-09-16T00:05:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 200,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://type.futtv.nx.kg/ars/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 Ar",
+              "url": "https://type.futtv.nx.kg/ips/index.m3u8"
             }
           ]
         },
