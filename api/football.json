@@ -49,7 +49,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://off.futtv.nx.kg/val-esp/index.m3u8"
             }
           ]
         },
@@ -157,6 +157,26 @@
           "streams": [
             {
               "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Elche vs Real Madrid",
+          "uri_name": "e4v1r8",
+          "poster": "https://i.ibb.co/wh7TwJ5N/image-5e0e1ad5.jpg",
+          "tag": "Laliga",
+          "starts_at": "2026-09-15T22:30:00",
+          "ends_at": "2026-09-16T00:35:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            },
+            {
+              "title": "Alt Feed 1",
               "url": ""
             }
           ]
