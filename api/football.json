@@ -169,15 +169,15 @@
           "starts_at": "2026-09-15T22:30:00",
           "ends_at": "2026-09-16T00:40:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 150,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://off.futtv.nx.kg/rm-en/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 Es",
+              "url": "https://off.futtv.nx.kg/rm-es/index.m3u8"
             }
           ]
         }
