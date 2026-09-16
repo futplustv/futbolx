@@ -97,7 +97,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/acmil/index.m3u8"
             }
           ]
         },
@@ -113,7 +113,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/lev/index.m3u8"
             }
           ]
         },
@@ -129,7 +129,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/dina/index.m3u8"
             }
           ]
         },
@@ -145,7 +145,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/lyon/index.m3u8"
             }
           ]
         },
@@ -161,7 +161,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/renna/index.m3u8"
             }
           ]
         },
@@ -177,7 +177,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/sun/index.m3u8"
             }
           ]
         },
@@ -193,7 +193,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/olim/index.m3u8"
             }
           ]
         },
@@ -205,15 +205,15 @@
           "starts_at": "2026-09-16T22:00:00",
           "ends_at": "2026-09-17T00:05:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 300,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://futbolx.ryzn.pro/mun-en/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 Ar",
+              "url": "https://futbolx.ryzn.pro/mun-ar/index.m3u8"
             }
           ]
         },
@@ -229,7 +229,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/covent/index.m3u8"
             }
           ]
         },
