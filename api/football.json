@@ -6,178 +6,266 @@
       "always_live": 0,
       "streams": [
         {
-          "name": "Genoa vs Sudtirol",
-          "uri_name": "g4v1s8",
-          "poster": "https://i.ibb.co/Psrfyyfm/image-77106120.jpg",
-          "tag": "Coppa Italia",
-          "starts_at": "2026-09-15T19:00:00",
-          "ends_at": "2026-09-15T21:05:00",
+          "name": "Omonia Nicosia vs Celta Vigo",
+          "uri_name": "o4v1c8",
+          "poster": "https://i.ibb.co/HfQTc8xG/image-d9918e71.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T19:45:00",
+          "ends_at": "2026-09-16T21:50:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/geno/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Al-Ain vs Al Nassr",
-          "uri_name": "a4v1a8",
-          "poster": "https://i.ibb.co/W493gw57/file-00000000b0a881f5817391d764d6304e.png",
-          "tag": "AFC Champions",
-          "starts_at": "2026-09-15T19:00:00",
-          "ends_at": "2026-09-15T21:05:00",
+          "name": "Ararat-Armenia vs Sparta Prague",
+          "uri_name": "a4v1s8",
+          "poster": "https://i.ibb.co/V0q61kMg/image-bfcd53ad.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T19:45:00",
+          "ends_at": "2026-09-16T21:50:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/alnas/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Rayo Vallecano vs Espanyol",
-          "uri_name": "r4v1e8",
-          "poster": "https://i.ibb.co/tTrLrkrw/image-ee59b24.jpg",
+          "name": "Atlético Madrid vs Osasuna",
+          "uri_name": "a4v1o8",
+          "poster": "https://i.ibb.co/nsxSftvG/image-d2d833c1.jpg",
           "tag": "Laliga",
-          "starts_at": "2026-09-15T20:00:00",
-          "ends_at": "2026-09-15T22:05:00",
+          "starts_at": "2026-09-16T20:00:00",
+          "ends_at": "2026-09-16T22:05:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/val-esp/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Alaves vs Valencia",
-          "uri_name": "a4v1v8",
-          "poster": "https://i.ibb.co/SD9rGCzc/image-7e540b0a.jpg",
+          "name": "Deportivo vs Sevilla",
+          "uri_name": "d4v1s8",
+          "poster": "https://i.ibb.co/Xrp241gw/image-db445fac.jpg",
           "tag": "Laliga",
-          "starts_at": "2026-09-15T21:00:00",
-          "ends_at": "2026-09-15T23:05:00",
+          "starts_at": "2026-09-16T20:00:00",
+          "ends_at": "2026-09-16T22:05:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/alaves/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "West Ham vs Fulham",
-          "uri_name": "w4v1f8",
-          "poster": "https://i.ibb.co/WNXLP44y/image-8c4741a8.jpg",
+          "name": "Everton vs Wolves",
+          "uri_name": "e4v1w8",
+          "poster": "https://i.ibb.co/FLgvnkpm/file-000000007e388230833ff619e49cf510.png",
           "tag": "Efl Cup",
-          "starts_at": "2026-09-15T21:45:00",
-          "ends_at": "2026-09-15T23:55:00",
+          "starts_at": "2026-09-16T21:45:00",
+          "ends_at": "2026-09-16T23:50:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/ful-whu/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Liverpool vs Tottenham",
-          "uri_name": "l4v1t8",
-          "poster": "https://i.ibb.co/sJkB1rQ1/image-e07acf08.jpg",
-          "tag": "Efl Cup",
-          "starts_at": "2026-09-15T22:00:00",
-          "ends_at": "2026-09-16T00:05:00",
+          "name": "Ac Milan vs Benfica",
+          "uri_name": "a4v1b8",
+          "poster": "https://i.ibb.co/1JjDRCQv/image-554eaa28.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
           "always_live": 0,
-          "max_simulated_viewers": 400,
+          "max_simulated_viewers": 0,
           "streams": [
             {
-              "title": "Main Feed En",
-              "url": "https://type.futtv.nx.kg/liv-en/index.m3u8"
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Bayer Leverkusen vs NK Celje",
+          "uri_name": "b4v1n8",
+          "poster": "https://i.ibb.co/FbvyqLN9/image-47de1115.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Hapoel Be'er vs Dinamo Zagreb",
+          "uri_name": "h4v1d8",
+          "poster": "https://i.ibb.co/ZzthwnJv/image-8990d1af.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Anderlecht vs Lyon",
+          "uri_name": "a4v1l8",
+          "poster": "https://i.ibb.co/ymC6RjKg/image-4864a34b.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "SK Sturm Graz vs Stade Rennais",
+          "uri_name": "s4v1s8",
+          "poster": "https://i.ibb.co/BKvHXNK3/image-8e628872.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Sunderland vs AZ Alkmaar",
+          "uri_name": "s4v1a8",
+          "poster": "https://i.ibb.co/m53snVKf/image-5b4ab4a3.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Olympiacos vs Jagiellonia Bialystok",
+          "uri_name": "o4v1j8",
+          "poster": "https://i.ibb.co/gbBk3bvP/image-ab1d88f6.jpg",
+          "tag": "Uefa Europa",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Manchester United vs Brighton",
+          "uri_name": "m4v1b8",
+          "poster": "https://i.ibb.co/PGdRz2jY/file-000000008b6081fd8866996c693ba8bd.png",
+          "tag": "Efl Cup",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
             },
             {
-              "title": "Alt Feed 1 Ar",
-              "url": "https://type.futtv.nx.kg/liv-ar/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 2 Fr",
-              "url": "https://type.futtv.nx.kg/liv-fr/index.m3u8"
+              "title": "Alt Feed 1",
+              "url": ""
             }
           ]
         },
         {
-          "name": "Ipswich vs Arsenal",
-          "uri_name": "i4v1a8",
-          "poster": "https://i.ibb.co/Q5tLB2G/image-23fdb900.jpg",
+          "name": "Coventry City vs Aston Villa",
+          "uri_name": "c4v1a8",
+          "poster": "https://i.ibb.co/394Fc37f/file-00000000b50882309400a09179731b1c.png",
           "tag": "Efl Cup",
-          "starts_at": "2026-09-15T22:00:00",
-          "ends_at": "2026-09-16T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 200,
-          "streams": [
-            {
-              "title": "Main Feed En",
-              "url": "https://type.futtv.nx.kg/ars/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 1 Ar",
-              "url": "https://type.futtv.nx.kg/ips/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Reading vs Brentford",
-          "uri_name": "r4v1b8",
-          "poster": "https://i.ibb.co/rGXHpmpp/image-76c1b8d1.jpg",
-          "tag": "Efl Cup",
-          "starts_at": "2026-09-15T22:00:00",
-          "ends_at": "2026-09-16T00:05:00",
+          "starts_at": "2026-09-16T22:00:00",
+          "ends_at": "2026-09-17T00:05:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/rea-bre/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Fiorentina vs Pisa",
-          "uri_name": "f4v1p8",
-          "poster": "https://i.ibb.co/0pNKxGpQ/image-eda2cd.jpg",
-          "tag": "Coppa Italia",
-          "starts_at": "2026-09-15T22:00:00",
-          "ends_at": "2026-09-16T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://off.futtv.nx.kg/fio/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Elche vs Real Madrid",
-          "uri_name": "e4v1r8",
-          "poster": "https://i.ibb.co/wh7TwJ5N/image-5e0e1ad5.jpg",
+          "name": "Barcelona vs Racing Santander",
+          "uri_name": "b4v1r8",
+          "poster": "https://i.ibb.co/gZqGpBTv/image-dad0ff21.jpg",
           "tag": "Laliga",
-          "starts_at": "2026-09-15T22:30:00",
-          "ends_at": "2026-09-16T00:40:00",
+          "starts_at": "2026-09-16T22:30:00",
+          "ends_at": "2026-09-17T00:35:00",
           "always_live": 0,
-          "max_simulated_viewers": 150,
+          "max_simulated_viewers": 0,
           "streams": [
             {
-              "title": "Main Feed En",
-              "url": "https://off.futtv.nx.kg/rm-en/index.m3u8"
+              "title": "Main Feed",
+              "url": ""
             },
             {
-              "title": "Alt Feed 1 Es",
-              "url": "https://off.futtv.nx.kg/rm-es/index.m3u8"
+              "title": "Alt Feed 1",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "Levante vs Athletic Club",
+          "uri_name": "l4v1a8",
+          "poster": "https://i.ibb.co/q3dQXm0f/image-d70d5289.jpg",
+          "tag": "Laliga",
+          "starts_at": "2026-09-16T22:30:00",
+          "ends_at": "2026-09-17T00:35:00",
+          "always_live": 0,
+          "max_simulated_viewers": 0,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": ""
             }
           ]
         }
