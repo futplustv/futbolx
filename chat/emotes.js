@@ -54,5 +54,6 @@ export const EMOTE_LIBRARY = [
       { name: "speed", url: "https://cdn.7tv.app/emote/01KEAG2JZH53H5GKKYZQNEVC90/4x.webp" },
       { name: "Football", url: "https://cdn.7tv.app/emote/01GJQ0ER7G0004ZNQR0J84JYH9/4x.webp" },
       { name: "PepPog", url: "https://cdn.7tv.app/emote/01FV3NRJ680006J115VRY680Q9/4x.webp" },
-      { name: "REF", url: "https://cdn.7tv.app/emote/01GKQ60YHR000CS736JH649MBC/4x.webp" }
+      { name: "REF", url: "https://cdn.7tv.app/emote/01GKQ60YHR000CS736JH649MBC/4x.webp" },
+      { name: "Clown", url: "https://cdn.7tv.app/emote/01G600E4H0000CM40ASKS08P4W/4x.webp" }
     ];
