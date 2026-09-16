@@ -6,102 +6,18 @@
       "always_live": 0,
       "streams": [
         {
-          "name": "Spanish Grand Prix - Practice 1",
-          "uri_name": "s4p1x7",
-          "poster": "https://i.ibb.co/5gmRGqwb/file-0000000050308211b869f5c37238d8b8.png",
-          "tag": "F1",
-          "starts_at": "2026-09-11T14:30:00",
-          "ends_at": "2026-09-11T16:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Sky F1 En",
-              "url": "https://sweden.futtv.nx.kg/f1-en/index.m3u8"
-            },
-            {
-              "title": "Sky F1 It",
-              "url": "https://sweden.futtv.nx.kg/f1-It/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Spanish Grand Prix - Practice 2",
-          "uri_name": "s4p2x7",
-          "poster": "https://i.ibb.co/twXfrhmN/file-00000000e0188230aac190d01a177466.png",
-          "tag": "F1",
-          "starts_at": "2026-09-11T18:00:00",
-          "ends_at": "2026-09-11T20:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Sky F1 En",
-              "url": "https://sweden.futtv.nx.kg/f1-en/index.m3u8"
-            },
-            {
-              "title": "Sky F1 It",
-              "url": "https://sweden.futtv.nx.kg/f1-It/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Spanish Grand Prix - Practice 3",
-          "uri_name": "s4p3x7",
-          "poster": "https://i.ibb.co/xqzMTrHc/file-00000000737481f6b914b67aa021548b.png",
-          "tag": "F1",
-          "starts_at": "2026-09-12T13:30:00",
-          "ends_at": "2026-09-12T15:00:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed En",
-              "url": "https://sweden.futtv.nx.kg/f1-en/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 1 It",
-              "url": "https://sweden.futtv.nx.kg/f1tv/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Spanish Grand Prix - Qualifying",
-          "uri_name": "s4q1x7",
-          "poster": "https://i.ibb.co/b5bdJvNm/file-000000000cf481f5b359bf32117d4c07.png",
-          "tag": "F1",
-          "starts_at": "2026-09-12T17:00:00",
-          "ends_at": "2026-09-12T19:00:00",
+          "name": "Max vs 100",
+          "uri_name": "m4v118",
+          "poster": "https://lumiere-a.akamaihd.net/v1/images/maxvs100kafinal_706cd38f.jpeg?region=0,104,1080,609&width=960",
+          "tag": "Others",
+          "starts_at": "2026-09-16T19:00:00",
+          "ends_at": "2026-09-16T21:00:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://sweden.futtv.nx.kg/f1-en/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 1",
-              "url": "https://sweden.futtv.nx.kg/f1tv/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Spanish Grand Prix - Race",
-          "uri_name": "s4r1x7",
-          "poster": "https://i.ibb.co/wrCCXPD3/file-0000000023a081f49a107bd63bca458f.png",
-          "tag": "F1",
-          "starts_at": "2026-09-13T16:00:00",
-          "ends_at": "2026-09-13T18:30:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://on.futtv.nx.kg/f1-sky/index.m3u8"
-            },
-            {
-              "title": "Alt Feed 1",
-              "url": "https://on.futtv.nx.kg/f1-ap/index.m3u8"
+              "url": ""
             }
           ]
         }
