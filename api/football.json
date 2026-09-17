@@ -61,7 +61,7 @@
           "starts_at": "2026-09-17T21:30:00",
           "ends_at": "2026-09-17T23:35:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 300,
           "streams": [
             {
               "title": "Main Feed En",
