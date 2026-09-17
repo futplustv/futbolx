@@ -64,16 +64,16 @@
           "max_simulated_viewers": 0,
           "streams": [
             {
-              "title": "Main Feed",
-              "url": ""
+              "title": "Main Feed En",
+              "url": "https://futbolx.ryzn.pro/mci-en/index.m3u8"
             },
             {
-              "title": "Alt Feed 1",
-              "url": ""
+              "title": "Alt Feed 1 Ar",
+              "url": "https://futbolx.ryzn.pro/mci-ar/index.m3u8"
             },
             {
-              "title": "Alt Feed 2",
-              "url": ""
+              "title": "Alt Feed 2 Fr",
+              "url": "https://futbolx.ryzn.pro/mci-fr/index.m3u8"
             }
           ]
         },
@@ -89,7 +89,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/rel-bou/index.m3u8"
             }
           ]
         },
@@ -105,7 +105,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/juve/index.m3u8"
             }
           ]
         },
@@ -121,7 +121,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/palac/index.m3u8"
             }
           ]
         },
@@ -137,7 +137,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/marsi/index.m3u8"
             }
           ]
         },
@@ -153,7 +153,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/celt/index.m3u8"
             }
           ]
         },
@@ -169,7 +169,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/lsk/index.m3u8"
             }
           ]
         },
@@ -185,7 +185,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/unio/index.m3u8"
             }
           ]
         },
