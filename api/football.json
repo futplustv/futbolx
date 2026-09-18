@@ -6,196 +6,84 @@
       "always_live": 0,
       "streams": [
         {
-          "name": "OFI Crete vs TSG Hoffenheim",
-          "uri_name": "o4v1t8",
-          "poster": "https://i.ibb.co/zh6CB4hm/image-7ea721c8.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T19:45:00",
-          "ends_at": "2026-09-17T21:50:00",
+          "name": "Bayern Munich vs Union Berlin",
+          "uri_name": "b4v1u8",
+          "poster": "https://i.ibb.co/HLYLjcMk/image-983b2322.jpg",
+          "tag": "Bundesliga",
+          "starts_at": "2026-09-18T21:30:00",
+          "ends_at": "2026-09-18T23:35:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/hoff/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Levski Sofia vs RB Salzburg",
-          "uri_name": "l4v1r8",
-          "poster": "https://i.ibb.co/9mLc3QXy/image-406eaf5e.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T19:45:00",
-          "ends_at": "2026-09-17T21:50:00",
+          "name": "Monaco vs Lens",
+          "uri_name": "m4v1l8",
+          "poster": "https://i.ibb.co/tw01Qy0t/image-13d312f5.jpg",
+          "tag": "Ligue 1",
+          "starts_at": "2026-09-18T21:45:00",
+          "ends_at": "2026-09-18T23:50:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/salz/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Real Betis vs Getafe",
-          "uri_name": "r4v1g8",
-          "poster": "https://i.ibb.co/tTTshQzz/image-5904a303.jpg",
-          "tag": "Laliga",
-          "starts_at": "2026-09-17T20:00:00",
-          "ends_at": "2026-09-17T22:05:00",
+          "name": "Monza vs Sassuolo",
+          "uri_name": "m4v1s8",
+          "poster": "https://i.ibb.co/4gj4YMq9/image-60b4aee9.jpg",
+          "tag": "Seria A",
+          "starts_at": "2026-09-18T21:45:00",
+          "ends_at": "2026-09-18T23:50:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/rel-bet/index.m3u8"
+              "url": ""
             }
           ]
         },
         {
-          "name": "Manchester City vs Norwich City",
-          "uri_name": "m4v1n8",
-          "poster": "https://i.ibb.co/kgLLP7TQ/image-e031d64a.jpg",
-          "tag": "Carabao Cup",
-          "starts_at": "2026-09-17T21:30:00",
-          "ends_at": "2026-09-17T23:35:00",
+          "name": "Brentford vs Chelsea",
+          "uri_name": "b4v1c8",
+          "poster": "https://i.ibb.co/KpwbzKcy/image-536601e6.jpg",
+          "tag": "Epl",
+          "starts_at": "2026-09-18T22:00:00",
+          "ends_at": "2026-09-19T00:05:00",
           "always_live": 0,
-          "max_simulated_viewers": 300,
+          "max_simulated_viewers": 0,
           "streams": [
             {
-              "title": "Main Feed En",
-              "url": "https://futbolx.ryzn.pro/mci-en/index.m3u8"
+              "title": "Main Feed",
+              "url": ""
             },
             {
-              "title": "Alt Feed 1 Ar",
-              "url": "https://futbolx.ryzn.pro/mci-ar/index.m3u8"
+              "title": "Alt Feed 1",
+              "url": ""
             },
             {
-              "title": "Alt Feed 2 Fr",
-              "url": "https://futbolx.ryzn.pro/mci-fr/index.m3u8"
+              "title": "Alt Feed 2",
+              "url": ""
             }
           ]
         },
         {
-          "name": "Real Sociedad vs Bournemouth",
-          "uri_name": "r4v1b8",
-          "poster": "https://i.ibb.co/6RTgfbSF/image-41468363.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T22:00:00",
-          "ends_at": "2026-09-18T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/rel-bou/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Juventus vs NEC Nijmegen",
-          "uri_name": "j4v1n8",
-          "poster": "https://i.ibb.co/20TzWwSy/image-a72a597b.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T22:00:00",
-          "ends_at": "2026-09-18T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/juve/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Crystal Palace vs Lech Poznan",
-          "uri_name": "c4v1l8",
-          "poster": "https://i.ibb.co/bgc0XhBj/image-d21d4b39.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T22:00:00",
-          "ends_at": "2026-09-18T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/palac/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Besiktas vs Marseille",
-          "uri_name": "b4v1m8",
-          "poster": "https://i.ibb.co/mVL1zWfK/image-65306ef3.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T22:00:00",
-          "ends_at": "2026-09-18T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/marsi/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Celtic vs Ferencvaros",
-          "uri_name": "c4v1f8",
-          "poster": "https://i.ibb.co/zHTrxcPc/image-4971ab88.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T22:00:00",
-          "ends_at": "2026-09-18T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/celt/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Lillestrom vs Torreense",
-          "uri_name": "l4v1t8",
-          "poster": "https://i.ibb.co/gZ7kn3gD/image-ba5fe604.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T22:00:00",
-          "ends_at": "2026-09-18T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/lsk/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Viktoria Plzen vs Union St.-Gilloise",
-          "uri_name": "v4v1u8",
-          "poster": "https://i.ibb.co/x8twGRMF/image-b82cf39f.jpg",
-          "tag": "Uefa Europa",
-          "starts_at": "2026-09-17T22:00:00",
-          "ends_at": "2026-09-18T00:05:00",
-          "always_live": 0,
-          "max_simulated_viewers": 0,
-          "streams": [
-            {
-              "title": "Main Feed",
-              "url": "https://type.futtv.nx.kg/unio/index.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "Málaga vs Villarreal",
-          "uri_name": "m4v1v8",
-          "poster": "https://i.ibb.co/nqDpMdK9/image-714d30d8.jpg",
+          "name": "Espanyol vs Elche",
+          "uri_name": "e4v1e8",
+          "poster": "https://i.ibb.co/xqbnmSGV/image-7e21c770.jpg",
           "tag": "Laliga",
-          "starts_at": "2026-09-17T22:30:00",
-          "ends_at": "2026-09-18T00:35:00",
+          "starts_at": "2026-09-18T22:00:00",
+          "ends_at": "2026-09-19T00:05:00",
           "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
