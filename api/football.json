@@ -13,11 +13,27 @@
           "starts_at": "2026-09-19T14:30:00",
           "ends_at": "2026-09-19T16:35:00",
           "always_live": 0,
+          "max_simulated_viewers": 100,
+          "streams": [
+            {
+              "title": "Main Feed",
+              "url": "https://type.futtv.nx.kg/totte/index.m3u8"
+            }
+          ]
+        },
+        {
+          "name": "Millwall vs West Ham",
+          "uri_name": "m4v1w8",
+          "poster": "https://i.ibb.co/4gRsvbYs/file-0000000069e482118d0d2287c51090ee.png",
+          "tag": "Efl Championship",
+          "starts_at": "2026-09-19T14:30:00",
+          "ends_at": "2026-09-19T16:35:00",
+          "always_live": 0,
           "max_simulated_viewers": 0,
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/whu/index.m3u8"
             }
           ]
         },
