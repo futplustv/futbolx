@@ -157,11 +157,11 @@
           "starts_at": "2026-09-19T17:00:00",
           "ends_at": "2026-09-19T19:05:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 500,
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://futbolx.ryzn.pro/ars/index.m3u8"
             }
           ]
         },
@@ -173,11 +173,11 @@
           "starts_at": "2026-09-19T17:00:00",
           "ends_at": "2026-09-19T19:05:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 100,
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://futbolx.ryzn.pro/new/index.m3u8"
             }
           ]
         },
@@ -189,11 +189,11 @@
           "starts_at": "2026-09-19T17:00:00",
           "ends_at": "2026-09-19T19:05:00",
           "always_live": 0,
-          "max_simulated_viewers": 0,
+          "max_simulated_viewers": 60,
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://futbolx.ryzn.pro/eve/index.m3u8"
             }
           ]
         },
@@ -209,7 +209,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://futbolx.ryzn.pro/wre/index.m3u8"
             }
           ]
         },
