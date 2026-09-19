@@ -273,7 +273,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/celta/index.m3u8"
             }
           ]
         },
@@ -289,7 +289,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/not/index.m3u8"
             }
           ]
         },
@@ -305,7 +305,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/dort/index.m3u8"
             }
           ]
         },
