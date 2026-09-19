@@ -97,7 +97,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/mainz/index.m3u8"
             }
           ]
         },
@@ -113,7 +113,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/frank/index.m3u8"
             }
           ]
         },
@@ -129,7 +129,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/ham/index.m3u8"
             }
           ]
         },
@@ -145,7 +145,7 @@
           "streams": [
             {
               "title": "Main Feed",
-              "url": ""
+              "url": "https://type.futtv.nx.kg/werder/index.m3u8"
             }
           ]
         },
